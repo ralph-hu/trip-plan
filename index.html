@@ -192,14 +192,105 @@
   .collapsible-section { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
   .collapsible-section.open { max-height: 5000px; }
 
+  /* ===== Mobile Optimization ===== */
   @media (max-width: 600px) {
-    .time-block { flex-direction: column; gap: 4px; }
-    .time-col { min-width: auto; }
-    #overview-map { height: 300px; }
-    .day-map { height: 250px; }
-    .day-tab { min-width: 58px; padding: 8px 10px; font-size: 0.72em; }
-    .loop-node { min-width: 60px; }
-    .loop-arrow { min-width: 40px; }
+    /* Base layout */
+    .container { padding: 10px 8px; }
+    h1 { font-size: 1.4em; margin: 12px 0 4px; }
+    .subtitle { font-size: 0.85em; }
+    .version-note { font-size: 0.8em; margin-bottom: 16px; }
+
+    /* Day cards */
+    .day-card { border-radius: 10px; margin-bottom: 16px; }
+    .day-header { padding: 12px 14px; font-size: 1em; flex-direction: column; align-items: flex-start; gap: 2px; }
+    .day-header .day-sub { font-size: 0.8em; }
+
+    /* Timeline - stack vertically */
+    .timeline { padding: 0 14px 14px; }
+    .time-block { flex-direction: column; gap: 2px; padding: 12px 0; }
+    .time-col { min-width: auto; display: flex; align-items: center; gap: 8px; }
+    .time-val { font-size: 1em; }
+    .duration { font-size: 0.8em; }
+    .content-col h3 { font-size: 0.95em; line-height: 1.5; }
+    .content-col p { font-size: 0.88em; line-height: 1.8; }
+
+    /* Tags - slightly larger for touch */
+    .tag { font-size: 0.68em; padding: 2px 6px; margin-left: 2px; }
+
+    /* Info boxes */
+    .highlights, .tip-box, .warn-box, .food-box { padding: 10px 12px; font-size: 0.85em; margin: 6px 0; }
+
+    /* Decision box */
+    .decision { padding: 14px; margin: 16px 0; }
+    .option { padding: 10px 12px; }
+
+    /* Maps */
+    #overview-map { height: 260px; }
+    .day-map { height: 220px; }
+    .map-section h2 { padding: 12px 14px 0; font-size: 1em; }
+    .map-section .map-subtitle { padding: 0 14px 8px; }
+    .map-legend { padding: 8px 14px 12px; gap: 8px; font-size: 0.75em; }
+
+    /* Spot images - full width on mobile */
+    .spot-img { width: 100%; border-radius: 8px; }
+
+    /* Itinerary loop timeline */
+    .loop-section { padding: 14px; margin-bottom: 16px; }
+    .loop-section h2 { font-size: 1em; margin-bottom: 10px; }
+    .loop-node { min-width: 56px; }
+    .loop-dot { width: 30px; height: 30px; font-size: 10px; }
+    .loop-label { font-size: 0.62em; }
+    .loop-city { font-size: 0.58em; }
+    .loop-arrow { min-width: 36px; }
+    .loop-arrow-info { font-size: 0.52em; top: 14px; }
+
+    /* Day pagination tabs - sticky */
+    .day-pagination { border-radius: 0; margin: 0 -8px; width: calc(100% + 16px); }
+    .day-tab { min-width: 54px; padding: 8px 10px; font-size: 0.7em; }
+    .day-tab .tab-date { font-size: 0.8em; }
+
+    /* Time navigation pills */
+    .time-nav { padding: 8px 14px; gap: 5px; }
+    .time-pill { padding: 5px 10px; font-size: 0.72em; }
+
+    /* Prev/Next nav buttons - larger touch targets */
+    .day-nav-buttons { padding: 12px 14px; }
+    .day-nav-btn { padding: 12px 18px; font-size: 0.9em; border-radius: 10px; min-height: 44px; }
+
+    /* Accommodation section */
+    .accom { padding: 14px; margin: 16px 0; border-radius: 10px; }
+    .accom h2 { font-size: 1.05em; margin-bottom: 12px; }
+    .accom-card { flex-direction: column; padding: 12px; gap: 10px; }
+    .accom-img { width: 100%; height: 180px; border-radius: 8px; }
+    .accom-name { font-size: 0.95em; }
+    .accom-meta { font-size: 0.83em; }
+    .accom-total { padding: 12px 14px; font-size: 0.85em; }
+
+    /* Summary table - horizontal scroll */
+    .summary { padding: 14px; margin-bottom: 16px; }
+    .summary h2 { font-size: 1em; }
+    .summary table { font-size: 0.78em; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .summary th, .summary td { padding: 6px; white-space: nowrap; }
+
+    /* Usage guide */
+    .usage-guide h2 { padding: 12px 14px 6px; font-size: 1em; }
+    .usage-steps { padding: 0 14px 14px; grid-template-columns: 1fr; gap: 10px; }
+
+    /* Weather */
+    .weather-section h2 { padding: 12px 14px 4px; font-size: 1em; }
+    .weather-table { font-size: 0.75em; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .weather-table th, .weather-table td { padding: 6px 8px; white-space: nowrap; }
+    .packing-grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 14px 14px; }
+    .packing-card { padding: 10px; }
+    .packing-card h4 { font-size: 0.82em; }
+    .weather-alert { margin: 6px 14px 10px; font-size: 0.8em; }
+
+    /* Section toggles - larger touch target */
+    .section-toggle { padding: 14px; font-size: 0.95em; min-height: 48px; border-radius: 10px; }
+
+    /* Safe area for notched phones */
+    body { padding-bottom: env(safe-area-inset-bottom); }
+    .day-pagination { padding-top: env(safe-area-inset-top); }
   }
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
