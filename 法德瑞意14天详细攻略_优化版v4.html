@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法德瑞意14天详细攻略 - 优化版 v4</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #333; line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+  h1 { text-align: center; color: #1a1a2e; font-size: 1.9em; margin: 20px 0 5px; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 10px; font-size: 0.95em; }
+  .version-note { text-align: center; color: #e65100; margin-bottom: 30px; font-size: 0.85em; background: #fff3e0; padding: 8px; border-radius: 8px; }
+
+  /* Day Card */
+  .day-card { background: #fff; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+  .day-header { padding: 16px 22px; font-weight: 700; font-size: 1.15em; color: #fff; display: flex; justify-content: space-between; align-items: center; }
+  .day-header .day-sub { font-weight: 400; font-size: 0.85em; opacity: 0.9; }
+  .day-header.fr { background: linear-gradient(135deg, #2B5797, #1e3c72); }
+  .day-header.de { background: linear-gradient(135deg, #D4A017, #b8860b); color: #1a1a1a; }
+  .day-header.ch { background: linear-gradient(135deg, #C62828, #8e0000); }
+  .day-header.it { background: linear-gradient(135deg, #2E7D32, #1b5e20); }
+  .day-header.transit { background: linear-gradient(135deg, #5C3D99, #3a1f6e); }
+
+  /* Timeline */
+  .timeline { padding: 0 22px 20px; }
+  .time-block { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
+  .time-block:last-child { border-bottom: none; }
+  .time-col { min-width: 80px; flex-shrink: 0; }
+  .time-val { font-weight: 700; color: #2B5797; font-size: 0.95em; }
+  .duration { font-size: 0.78em; color: #999; }
+  .content-col { flex: 1; }
+  .content-col h3 { font-size: 1em; margin-bottom: 4px; color: #1a1a2e; }
+  .content-col p { font-size: 0.9em; color: #555; margin: 2px 0; }
+
+  /* Tags */
+  .tag { display: inline-block; font-size: 0.72em; padding: 2px 7px; border-radius: 4px; margin-left: 4px; vertical-align: middle; font-weight: 600; }
+  .tag-spot { background: #E3F2FD; color: #1565C0; }
+  .tag-food { background: #FFF3E0; color: #E65100; }
+  .tag-transport { background: #F3E5F5; color: #7B1FA2; }
+  .tag-tip { background: #E8F5E9; color: #2E7D32; }
+  .tag-photo { background: #FCE4EC; color: #C62828; }
+  .tag-hotel { background: #E0F2F1; color: #00695C; }
+
+  /* Highlights */
+  .highlights { background: #f8f9ff; border-left: 4px solid #2B5797; padding: 10px 14px; margin: 8px 0; border-radius: 0 8px 8px 0; font-size: 0.88em; }
+  .highlights strong { color: #2B5797; }
+  .tip-box { background: #FFF8E1; border-left: 4px solid #FFC107; padding: 10px 14px; margin: 8px 0; border-radius: 0 8px 8px 0; font-size: 0.88em; }
+  .warn-box { background: #FFEBEE; border-left: 4px solid #EF5350; padding: 10px 14px; margin: 8px 0; border-radius: 0 8px 8px 0; font-size: 0.88em; }
+  .food-box { background: #FFF3E0; border-left: 4px solid #FF9800; padding: 10px 14px; margin: 8px 0; border-radius: 0 8px 8px 0; font-size: 0.88em; }
+
+  /* Decision Box */
+  .decision { background: #EDE7F6; border: 2px solid #7B1FA2; border-radius: 12px; padding: 18px 22px; margin: 28px 0; }
+  .decision h2 { color: #7B1FA2; font-size: 1.1em; margin-bottom: 10px; }
+  .decision p { font-size: 0.92em; }
+  .option { background: #fff; border-radius: 8px; padding: 12px 16px; margin: 8px 0; border: 1px solid #d1c4e9; }
+  .option h4 { color: #5C3D99; margin-bottom: 4px; }
+
+  /* Accommodation */
+  .accom { background: #fff; border-radius: 14px; padding: 22px; margin: 28px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .accom h2 { color: #2E7D32; font-size: 1.2em; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .accom-card { display: flex; gap: 16px; padding: 16px; margin: 12px 0; background: #f8faf8; border-radius: 12px; border: 1px solid #e8f0e8; transition: box-shadow 0.2s; }
+  .accom-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .accom-img { width: 160px; height: 120px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+  .accom-info { flex: 1; min-width: 0; }
+  .accom-name { font-weight: 700; font-size: 1em; color: #1a1a2e; margin-bottom: 4px; }
+  .accom-name .accom-badge { display: inline-block; font-size: 0.7em; padding: 2px 8px; border-radius: 4px; margin-left: 6px; background: #E8F5E9; color: #2E7D32; font-weight: 600; vertical-align: middle; }
+  .accom-meta { font-size: 0.85em; color: #555; line-height: 1.8; }
+  .accom-meta .label { font-weight: 600; color: #666; }
+  .accom-price { color: #C62828; font-weight: 700; }
+  .accom-rating { color: #FFC107; }
+  .accom-total { background: #E8F5E9; border-radius: 10px; padding: 14px 18px; margin-top: 16px; font-size: 0.88em; }
+  .accom-total strong { color: #2E7D32; }
+  @media (max-width: 600px) {
+    .accom-card { flex-direction: column; }
+    .accom-img { width: 100%; height: 180px; }
+  }
+
+  /* Summary Table */
+  .summary { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .summary h2 { color: #1a1a2e; margin-bottom: 12px; }
+  .summary table { width: 100%; border-collapse: collapse; font-size: 0.88em; }
+  .summary th { text-align: left; padding: 8px; border-bottom: 2px solid #2B5797; color: #2B5797; }
+  .summary td { padding: 8px; border-bottom: 1px solid #eee; }
+
+  /* Usage Guide */
+  .usage-guide { background: #fff; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+  .usage-guide h2 { padding: 16px 22px 8px; color: #1a1a2e; font-size: 1.1em; }
+  .usage-steps { padding: 0 22px 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .usage-step { background: #f8f9ff; border-radius: 10px; padding: 14px; display: flex; gap: 12px; align-items: flex-start; }
+  .usage-step .step-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .usage-step h4 { font-size: 0.88em; margin-bottom: 3px; color: #1a1a2e; }
+  .usage-step p { font-size: 0.78em; color: #666; line-height: 1.5; margin: 0; }
+
+  /* Weather section */
+  .weather-section { background: #fff; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+  .weather-section h2 { padding: 16px 22px 4px; color: #1a1a2e; font-size: 1.1em; }
+  .weather-section .weather-intro { padding: 0 22px 10px; font-size: 0.85em; color: #666; }
+  .weather-table { width: 100%; border-collapse: collapse; font-size: 0.82em; }
+  .weather-table th { text-align: left; padding: 8px 12px; border-bottom: 2px solid #2B5797; color: #2B5797; font-size: 0.9em; }
+  .weather-table td { padding: 8px 12px; border-bottom: 1px solid #f0f0f0; }
+  .weather-table tr:hover { background: #f8f9ff; }
+  .temp-bar { display: inline-block; height: 8px; border-radius: 4px; vertical-align: middle; margin-right: 6px; }
+  .packing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; padding: 12px 22px 18px; }
+  .packing-card { background: #f8f9ff; border-radius: 10px; padding: 12px 14px; }
+  .packing-card h4 { font-size: 0.85em; color: #1a1a2e; margin-bottom: 6px; }
+  .packing-card ul { font-size: 0.78em; color: #555; padding-left: 16px; margin: 0; line-height: 1.8; }
+  .weather-alert { margin: 8px 22px 14px; padding: 10px 14px; background: #FFF8E1; border-left: 4px solid #FFC107; border-radius: 0 8px 8px 0; font-size: 0.82em; }
+  .weather-alert b { color: #E65100; }
+
+  /* Attraction images */
+  .spot-img { width: 50%; height: auto; border-radius: 10px; margin: 8px 0 4px; display: block; }
+  .spot-img-caption { font-size: 0.72em; color: #999; text-align: right; margin: 0 0 6px; }
+
+  /* Map styles */
+  .map-section { background: #fff; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+  .map-section h2 { padding: 16px 22px 0; color: #1a1a2e; font-size: 1.15em; }
+  .map-section .map-subtitle { padding: 0 22px 12px; color: #888; font-size: 0.85em; }
+  #overview-map { height: 420px; border-radius: 0 0 14px 14px; }
+  .day-map-wrap { overflow: hidden; transition: max-height 0.4s ease; max-height: 0; }
+  .day-map-wrap.open { max-height: 400px; }
+  .day-map { height: 300px; }
+  .map-toggle { display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.4); color: inherit; padding: 3px 10px; border-radius: 6px; font-size: 0.75em; cursor: pointer; transition: background 0.2s; }
+  .map-toggle:hover { background: rgba(255,255,255,0.4); }
+  .map-toggle svg { width: 14px; height: 14px; fill: currentColor; }
+  .city-label { font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .leaflet-popup-content { font-family: -apple-system, "PingFang SC", sans-serif; font-size: 13px; line-height: 1.5; }
+  .leaflet-popup-content b { color: #1a1a2e; }
+  .leaflet-popup-content .pop-time { color: #2B5797; font-weight: 600; font-size: 12px; }
+  .leaflet-popup-content .pop-info { color: #555; font-size: 12px; }
+
+  .map-legend { display: flex; flex-wrap: wrap; gap: 12px; padding: 10px 22px 14px; font-size: 0.8em; }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+
+  /* ===== Itinerary Loop Timeline ===== */
+  .loop-section { background: #fff; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); padding: 22px; overflow: hidden; }
+  .loop-section h2 { color: #1a1a2e; font-size: 1.15em; margin-bottom: 16px; }
+  .loop-track { display: flex; overflow-x: auto; gap: 0; padding: 10px 0 16px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+  .loop-track::-webkit-scrollbar { height: 4px; }
+  .loop-track::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+  .loop-node { display: flex; flex-direction: column; align-items: center; min-width: 80px; cursor: pointer; position: relative; flex-shrink: 0; }
+  .loop-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: transform 0.2s, box-shadow 0.2s; z-index: 2; }
+  .loop-node:hover .loop-dot, .loop-node.active .loop-dot { transform: scale(1.2); box-shadow: 0 3px 10px rgba(0,0,0,0.3); }
+  .loop-label { font-size: 0.7em; color: #555; margin-top: 6px; text-align: center; white-space: nowrap; font-weight: 600; }
+  .loop-city { font-size: 0.65em; color: #999; text-align: center; white-space: nowrap; }
+  .loop-arrow { display: flex; align-items: center; min-width: 60px; flex-shrink: 0; position: relative; }
+  .loop-arrow-line { height: 2px; flex: 1; position: relative; }
+  .loop-arrow-line::after { content: ''; position: absolute; right: -3px; top: -4px; border: 5px solid transparent; border-left-width: 7px; }
+  .loop-arrow-info { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); font-size: 0.6em; color: #5C3D99; white-space: nowrap; text-align: center; line-height: 1.3; font-weight: 600; }
+
+  /* ===== Day Pagination ===== */
+  .day-pagination { background: #fff; border-radius: 14px; margin-bottom: 0; box-shadow: 0 2px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; overflow: hidden; }
+  .day-tabs { display: flex; overflow-x: auto; padding: 0; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+  .day-tabs::-webkit-scrollbar { height: 3px; }
+  .day-tabs::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+  .day-tab { flex-shrink: 0; padding: 10px 14px; font-size: 0.78em; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; text-align: center; min-width: 72px; color: #888; white-space: nowrap; }
+  .day-tab:hover { background: #f5f5f5; color: #333; }
+  .day-tab.active { color: #fff; border-bottom-color: rgba(255,255,255,0.6); }
+  .day-tab .tab-date { display: block; font-size: 0.85em; font-weight: 400; opacity: 0.8; }
+
+  /* ===== Time Navigation ===== */
+  .time-nav { display: flex; overflow-x: auto; gap: 6px; padding: 12px 22px; background: #f8f9ff; border-bottom: 1px solid #eee; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+  .time-nav::-webkit-scrollbar { height: 3px; }
+  .time-nav::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+  .time-pill { flex-shrink: 0; padding: 5px 12px; border-radius: 20px; font-size: 0.75em; font-weight: 600; cursor: pointer; border: 1px solid #ddd; background: #fff; color: #555; transition: all 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+  .time-pill:hover { background: #e8eaff; border-color: #aab; }
+  .time-pill.active { background: #2B5797; color: #fff; border-color: #2B5797; }
+  .time-pill .pill-icon { font-size: 1em; }
+  .time-pill.pill-transport { border-color: #E1BEE7; color: #7B1FA2; }
+  .time-pill.pill-transport.active { background: #7B1FA2; color: #fff; border-color: #7B1FA2; }
+  .time-pill.pill-food { border-color: #FFE0B2; color: #E65100; }
+  .time-pill.pill-food.active { background: #E65100; color: #fff; border-color: #E65100; }
+
+  /* ===== Prev/Next Buttons ===== */
+  .day-nav-buttons { display: flex; justify-content: space-between; padding: 16px 22px; }
+  .day-nav-btn { padding: 8px 20px; border-radius: 8px; font-size: 0.88em; font-weight: 600; cursor: pointer; border: 1px solid #ddd; background: #fff; color: #333; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+  .day-nav-btn:hover { background: #f0f0f0; }
+  .day-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .day-nav-btn.next { background: #2B5797; color: #fff; border-color: #2B5797; }
+  .day-nav-btn.next:hover { background: #1e3c72; }
+
+  /* ===== Day Card Pagination State ===== */
+  .day-cards-container .day-card { display: none; }
+  .day-cards-container .day-card.active-day { display: block; }
+
+  /* ===== Sections below pagination ===== */
+  .section-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 14px 22px; background: #fff; border-radius: 14px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); font-weight: 700; color: #1a1a2e; font-size: 1em; border: none; width: 100%; text-align: left; transition: background 0.2s; }
+  .section-toggle:hover { background: #f8f8f8; }
+  .section-toggle .toggle-arrow { transition: transform 0.3s; font-size: 0.8em; }
+  .section-toggle.open .toggle-arrow { transform: rotate(90deg); }
+  .collapsible-section { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .collapsible-section.open { max-height: 5000px; }
+
+  @media (max-width: 600px) {
+    .time-block { flex-direction: column; gap: 4px; }
+    .time-col { min-width: auto; }
+    #overview-map { height: 300px; }
+    .day-map { height: 250px; }
+    .day-tab { min-width: 58px; padding: 8px 10px; font-size: 0.72em; }
+    .loop-node { min-width: 60px; }
+    .loop-arrow { min-width: 40px; }
+  }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+</head>
+<body>
+<div class="container">
+
+<h1>法德瑞意14天详细攻略</h1>
+<p class="subtitle">2026.3.31 - 4.13 | 3人家庭 | 优化版 v5 | 分页交互式 | 含精确时间轴与打卡指南</p>
+<div class="version-note">v5.0 更新：全新分页式交互设计 — 行程闭环时间线 + 分页Day详情 + 时间轴导航 + 键盘左右翻页 | 已确认住宿（含照片）</div>
+
+<!-- ==================== USAGE GUIDE ==================== -->
+<div class="usage-guide">
+  <h2>使用指南</h2>
+  <div class="usage-steps">
+    <div class="usage-step">
+      <div class="step-icon" style="background:#E3F2FD;">&#127758;</div>
+      <div>
+        <h4>总览地图</h4>
+        <p>下方大地图展示4国完整路线。点击<b>城市标签</b>查看停留天数和主要景点；点击<b>虚线</b>查看城际交通方式和时长。可拖拽和缩放。</p>
+      </div>
+    </div>
+    <div class="usage-step">
+      <div class="step-icon" style="background:#F3E5F5;">&#128205;</div>
+      <div>
+        <h4>每日地图</h4>
+        <p>每天行程卡片右上角有 <b>Map</b> 按钮，点击展开当天路线地图。地图上的<b>编号圆点</b>对应当天各景点，点击可查看时间、票价、游览重点。</p>
+      </div>
+    </div>
+    <div class="usage-step">
+      <div class="step-icon" style="background:#FFF3E0;">&#128337;</div>
+      <div>
+        <h4>时间轴</h4>
+        <p>每天按时间顺序排列，左侧<b>蓝色时间</b>是预计到达时间，下方灰字是该环节时长。标签颜色区分：<span style="color:#1565C0;">景点</span> <span style="color:#E65100;">餐饮</span> <span style="color:#7B1FA2;">交通</span> <span style="color:#2E7D32;">提示</span> <span style="color:#C62828;">拍照</span></p>
+      </div>
+    </div>
+    <div class="usage-step">
+      <div class="step-icon" style="background:#FFEBEE;">&#9888;&#65039;</div>
+      <div>
+        <h4>重要提示</h4>
+        <p><span style="background:#FFF8E1;padding:1px 4px;border-radius:3px;font-size:11px;">黄色框</span> = 实用建议&ensp;<span style="background:#FFEBEE;padding:1px 4px;border-radius:3px;font-size:11px;">红色框</span> = 注意事项&ensp;<span style="background:#E8F5E9;padding:1px 4px;border-radius:3px;font-size:11px;">绿色框</span> = 重点打卡。文末有每日体力评估表，帮助合理安排节奏。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== WEATHER ==================== -->
+<div class="weather-section">
+  <h2>天气与穿衣指南 (3月底-4月中旬)</h2>
+  <p class="weather-intro">4月初的欧洲正值初春，昼夜温差大，各城市气候差异显著。南部的罗马已春暖花开，而阿尔卑斯山区仍有积雪。以下为历史同期气候参考：</p>
+
+  <table class="weather-table" style="margin: 0 22px; width: calc(100% - 44px);">
+    <tr>
+      <th>城市</th>
+      <th>气温范围</th>
+      <th>降水</th>
+      <th>日照</th>
+      <th>体感 & 建议</th>
+    </tr>
+    <tr>
+      <td><b>巴黎</b><br><span style="color:#888;font-size:0.9em;">3/31 - 4/3</span></td>
+      <td><span class="temp-bar" style="width:50px;background:linear-gradient(90deg,#64B5F6,#FFB74D);"></span>6 - 15°C</td>
+      <td>约45mm<br>~12天/月有雨</td>
+      <td>日落 20:15<br>白天较长</td>
+      <td>早晚凉，白天舒适。阵雨频繁，<b>必带折叠伞</b>。卢浮宫/凡尔赛室内暖和，进出温差注意</td>
+    </tr>
+    <tr>
+      <td><b>科隆</b><br><span style="color:#888;font-size:0.9em;">4/3 - 4/4</span></td>
+      <td><span class="temp-bar" style="width:48px;background:linear-gradient(90deg,#64B5F6,#FFB74D);"></span>5 - 14°C</td>
+      <td>约50mm<br>雨天较多</td>
+      <td>日落 20:20</td>
+      <td>与巴黎相近略冷。莱茵河边风大，<b>防风外套</b>有用。霍亨索伦桥日落拍照注意保暖</td>
+    </tr>
+    <tr>
+      <td><b>慕尼黑</b><br><span style="color:#888;font-size:0.9em;">4/4 - 4/7</span></td>
+      <td><span class="temp-bar" style="width:45px;background:linear-gradient(90deg,#42A5F5,#FFA726);"></span>3 - 13°C</td>
+      <td>约55mm<br>偶有雷阵雨</td>
+      <td>日落 20:00</td>
+      <td>巴伐利亚春寒，<b>早晚可能接近0°C</b>。国王湖湖面冷风大，新天鹅堡山上更冷。多穿一层</td>
+    </tr>
+    <tr>
+      <td><b>格林德瓦</b><br><span style="color:#888;font-size:0.9em;">4/7 - 4/9</span></td>
+      <td>
+        谷地：<span class="temp-bar" style="width:35px;background:linear-gradient(90deg,#42A5F5,#66BB6A);"></span>2 - 10°C<br>
+        <span style="color:#C62828;font-weight:600;">少女峰：-15 ~ -5°C</span>
+      </td>
+      <td>山区多变<br>可能有雪</td>
+      <td>日落 20:05</td>
+      <td><b style="color:#C62828;">少女峰必须穿冬装！</b>厚羽绒服+手套+帽子+墨镜+防晒霜（高海拔紫外线极强）。山下可穿春装</td>
+    </tr>
+    <tr>
+      <td><b>威尼斯</b><br><span style="color:#888;font-size:0.9em;">4/9 - 4/11</span></td>
+      <td><span class="temp-bar" style="width:55px;background:linear-gradient(90deg,#64B5F6,#FFB74D);"></span>8 - 16°C</td>
+      <td>约60mm<br>春季偶有暴雨</td>
+      <td>日落 19:50</td>
+      <td>水面湿气重体感偏凉。贡多拉上风大，<b>带围巾</b>。4月acqua alta（洪水）概率极低，无需担心</td>
+    </tr>
+    <tr>
+      <td><b>罗马</b><br><span style="color:#888;font-size:0.9em;">4/11 - 4/13</span></td>
+      <td><span class="temp-bar" style="width:60px;background:linear-gradient(90deg,#66BB6A,#FF8A65);"></span>9 - 19°C</td>
+      <td>约50mm<br>阵雨为主</td>
+      <td>日落 19:45</td>
+      <td>全程最暖！白天可穿单层长袖。Trastevere傍晚漫步很舒适。但梵蒂冈内部空调冷，<b>带件薄外套</b></td>
+    </tr>
+  </table>
+
+  <div class="weather-alert">
+    <b>天气相关的行程风险点：</b><br>
+    1. <b>少女峰 (Day 9)</b> — 山顶天气变化极快，大雾/暴风雪时完全看不到风景。<b>出发前必查 jungfrau.ch 实时摄像头</b>，如果能见度差，改为 First 悬崖步道或小镇漫步，少女峰改次日一早<br>
+    2. <b>玛丽恩桥 (Day 7)</b> — 4月初桥面可能因结冰而<b>临时关闭</b>。出发前查 hohenschwangau.de 官网公告。关闭时仍可从城堡附近其他角度拍照<br>
+    3. <b>国王湖上湖 Obersee (Day 6)</b> — 通常4月中下旬才通航，4月5日大概率<b>只能到 St. Bartholomae</b>，无法到上湖段。出发前查 bayerische-seenschifffahrt.de<br>
+    4. <b>塞纳河游船 (Day 4)</b> — 暴雨天游船可能取消或体验差。如遇大雨，可改为室内活动（奥赛博物馆/橘园美术馆，步行可达）
+  </div>
+
+  <h2 style="padding: 8px 22px 4px; font-size: 1em;">行李穿搭建议</h2>
+  <div class="packing-grid">
+    <div class="packing-card">
+      <h4>必穿 — 洋葱穿法</h4>
+      <ul>
+        <li>防风防水外套 (全程最重要)</li>
+        <li>薄羽绒/抓绒中层 (可脱穿)</li>
+        <li>长袖T恤/衬衫 若干</li>
+        <li>长裤为主 (教堂要求遮膝)</li>
+        <li>舒适步行鞋 (防滑底)</li>
+      </ul>
+    </div>
+    <div class="packing-card">
+      <h4>少女峰专用</h4>
+      <ul>
+        <li>厚羽绒服 (山顶-15°C)</li>
+        <li>手套 + 毛线帽</li>
+        <li>墨镜 (雪地反光刺眼)</li>
+        <li>防晒霜SPF50 (高海拔紫外线)</li>
+        <li>暖宝宝 (给父母备几片)</li>
+      </ul>
+    </div>
+    <div class="packing-card">
+      <h4>随身必备</h4>
+      <ul>
+        <li>折叠伞 (欧洲4月阵雨多)</li>
+        <li>轻薄围巾 (威尼斯水上/贡多拉)</li>
+        <li>大容量充电宝</li>
+        <li>欧标转换插头 (瑞士三孔不同!)</li>
+        <li>护照复印件 (与原件分开放)</li>
+      </ul>
+    </div>
+    <div class="packing-card">
+      <h4>教堂/博物馆穿着要求</h4>
+      <ul>
+        <li>梵蒂冈/圣彼得：遮肩遮膝</li>
+        <li>圣马可大教堂：同上</li>
+        <li>不可穿：短裤/背心/拖鞋</li>
+        <li>围巾可临时披肩遮盖</li>
+        <li>博物馆大包需寄存</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== OVERVIEW MAP ==================== -->
+<div class="map-section">
+  <h2>总览地图 — 4国14天路线</h2>
+  <p class="map-subtitle">点击城市标记查看详情 | 点击路线查看交通方式</p>
+  <div class="map-legend">
+    <span class="legend-item"><span class="legend-dot" style="background:#2B5797;"></span>法国</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#D4A017;"></span>德国</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#C62828;"></span>瑞士</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#2E7D32;"></span>意大利</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#5C3D99;"></span>跨国交通</span>
+  </div>
+  <div id="overview-map"></div>
+</div>
+
+<!-- ==================== ITINERARY LOOP TIMELINE ==================== -->
+<div class="loop-section">
+<h2>&#128196; 完整行程闭环 — 交通 &amp; 时间总览</h2>
+<p style="font-size:0.82em;color:#888;margin-bottom:10px;">点击任一天可跳转到详情页。横向滑动查看全部14天</p>
+<div class="loop-track" id="loop-track">
+  <!-- Day nodes and transport arrows will be injected by JS -->
+</div>
+</div>
+
+<!-- ==================== DAY PAGINATION ==================== -->
+<div class="day-pagination" id="day-pagination">
+<div class="day-tabs" id="day-tabs">
+  <!-- Tabs injected by JS -->
+</div>
+</div>
+
+<!-- ==================== DAY CARDS CONTAINER ==================== -->
+<div class="day-cards-container" id="day-cards-container">
+
+<!-- ==================== DAY 1 ==================== -->
+<div class="day-card">
+<div class="day-header fr">
+  <span>Day 1 | 3.31 周二 | 抵达巴黎</span>
+  <span class="day-sub">CDG 18:15 落地</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">18:15</div><div class="duration">~1.5h</div></div>
+    <div class="content-col">
+      <h3>戴高乐机场 <span class="tag tag-transport">交通</span></h3>
+      <p>提取行李 + 过海关，预计约1-1.5小时</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">19:45</div><div class="duration">~45min</div></div>
+    <div class="content-col">
+      <h3>前往酒店 <span class="tag tag-transport">交通</span></h3>
+      <p>建议预约专车接机（3人+行李，比RER B舒适）。到巴黎市区约45分钟</p>
+      <div class="tip-box">专车接机约 €55-70（3人分摊合理），可在 Welcome Pickups 或 GetTransfer 预订。避免深夜拖行李挤公共交通</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">20:30</div><div class="duration">晚间</div></div>
+    <div class="content-col">
+      <h3>入住巴黎圣母院公寓 + 简餐 <span class="tag tag-hotel">入住</span><span class="tag tag-food">餐饮</span></h3>
+      <p>入住 Airbnb「两间不同凡响的客房，位于巴黎圣母院」（2卧室整套公寓，¥5,273/3晚）。公寓附近找一家法式小酒馆(bistro)简单吃，或超市买食物回公寓。尽早休息倒时差</p>
+      <div class="tip-box">Airbnb 入住时间通常15:00后，深夜到达需提前和房东确认自助入住方式（密码锁箱）</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 2 ==================== -->
+<div class="day-card">
+<div class="day-header fr">
+  <span>Day 2 | 4.01 周三 | 巴黎经典日</span>
+  <span class="day-sub">卢浮宫 + 圣母院 + 圣礼拜堂 + 铁塔</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:30</div><div class="duration">15min</div></div>
+    <div class="content-col">
+      <h3>出发前往卢浮宫 <span class="tag tag-transport">地铁</span></h3>
+      <p>地铁到 Palais Royal - Musee du Louvre 站</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">09:00</div><div class="duration">3h</div></div>
+    <div class="content-col">
+      <h3>卢浮宫 Musee du Louvre <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>预约09:00最早时段，从 Passage Richelieu 入口进入（人最少）</p>
+      <div class="highlights">
+        <strong>推荐路线（2.5-3小时）：</strong><br>
+        1. Denon翼底层 → 丘比特与普赛克雕塑 → 胜利女神（楼梯顶端）<br>
+        2. Denon翼1楼 → 蒙娜丽莎（711室）→ 对面《迦拿的婚礼》(最大画作) → 700-702室：《美杜莎之筏》《自由引导人民》《拿破仑加冕》<br>
+        3. Sully翼底层 → 埃及文物馆（狮身人面像、木乃伊）<br>
+        4. Sully翼1楼 → 断臂维纳斯（346室）<br>
+        5. 有余力可看 Richelieu翼 → 拿破仑三世套房（极奢华，人少）
+      </div>
+      <div class="tip-box">语音导览 €6/台有中文，强烈推荐。周三不闭馆 ✅。带身份证件入场</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">12:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>午餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">
+        <strong>推荐选择：</strong><br>
+        - <strong>Angelina</strong>（226 Rue de Rivoli，步行5分钟）— 招牌热巧克力+勃朗峰蛋糕，适合父母 ~€15-25/人<br>
+        - <strong>Le Fumoir</strong>（步行3分钟）— 法式小酒馆午餐套餐，本地人爱去<br>
+        - 或在杜乐丽花园内找长椅野餐（旁边有面包店外带）
+      </div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">13:00</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>巴黎圣母院 Notre-Dame <span class="tag tag-spot">景点</span></h3>
+      <p>从卢浮宫步行约15分钟即到。2024年底重新开放，免费入内参观。外部拍照+内部浏览约30分钟</p>
+      <div class="highlights"><strong>重点：</strong>西立面三座大门的雕刻、玫瑰窗、重修后的内部</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">13:30</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>圣礼拜堂 Sainte-Chapelle <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>从圣母院步行5分钟即到（同在西岱岛上）。门票 €11.50/人。哥特式彩色玻璃的巅峰之作</p>
+      <div class="highlights"><strong>重点：</strong>上层礼拜堂 — 15扇彩色玻璃窗高达15米，1113个圣经场景，阳光穿透时如置身万花筒。被誉为"中世纪最美的建筑空间"</div>
+      <div class="tip-box">建议晴天来，阳光下彩色玻璃效果震撼。参观约20-30分钟即可</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">14:15</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>地铁前往铁塔 <span class="tag tag-transport">地铁</span></h3>
+      <p>Cite 站 → Bir-Hakeim（M4转M6，约20分钟）</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">14:45</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>埃菲尔铁塔 Tour Eiffel <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>建议购买电梯到二层的票（€29.40/人，性价比最高），二层观景已足够壮观</p>
+      <div class="highlights">
+        <strong>重点：</strong><br>
+        - 战神广场拍铁塔全景（经典角度）<br>
+        - 二层平台俯瞰巴黎城（可看到凯旋门、圣心大教堂）<br>
+        - 透明玻璃地板体验
+      </div>
+      <div class="warn-box">电梯票提前60天放票，热门时段几小时内售罄！每天巴黎时间10:00释放新票</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:00</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>亚历山大三世桥 Pont Alexandre III <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>从铁塔沿塞纳河步行约15分钟。巴黎最华丽的桥，镀金雕塑+铁塔背景，绝佳拍照点</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:30</div><div class="duration">晚间</div></div>
+    <div class="content-col">
+      <h3>晚餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">回酒店附近（Le Marais区）找一家法式小酒馆。推荐 Breizh Cafe（可丽饼，€12-18/人）或 Chez Janou（普罗旺斯菜，招牌巧克力慕斯）</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 3 ==================== -->
+<div class="day-card">
+<div class="day-header fr">
+  <span>Day 3 | 4.02 周四 | 凡尔赛 + 蒙马特</span>
+  <span class="day-sub">皇宫园林 + 购物 + 圣心大教堂</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:00</div><div class="duration">45min</div></div>
+    <div class="content-col">
+      <h3>RER C 前往凡尔赛 <span class="tag tag-transport">交通</span></h3>
+      <p>RER C → Versailles Chateau - Rive Gauche（约35-40分钟，€4.50/人）</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">09:00</div><div class="duration">4-5h</div></div>
+    <div class="content-col">
+      <h3>凡尔赛宫 Chateau de Versailles <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>预约09:00时段入场。宫殿内部约2小时，花园约1.5-2小时</p>
+      <div class="highlights">
+        <strong>宫殿必看（约2小时）：</strong><br>
+        - 镜厅 Galerie des Glaces — 73米长、357面镜子，整个凡尔赛的灵魂<br>
+        - 国王大居室七大厅（阿波罗厅、赫拉克勒斯厅）<br>
+        - 王后寝宫 — 玛丽·安托瓦内特的卧室<br>
+        - 皇家礼拜堂 — 从上层走廊俯瞰<br>
+        - 加冕厅 — 大卫《拿破仑加冕》巨幅画作<br><br>
+        <strong>花园必看（约1.5小时）：</strong><br>
+        - 拉托娜喷泉（镜厅正轴线下方）<br>
+        - 阿波罗喷泉 → 大运河<br>
+        - 橘园平台俯瞰
+      </div>
+      <div class="tip-box">4月2日是周四，无喷泉秀（喷泉秀通常周末才有）。花园人少，可安静漫步。花园小火车 €8/人，建议父母乘坐节省体力</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">13:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>凡尔赛午餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">
+        - <strong>Angelina（凡尔赛分店）</strong> — 在宫殿入口处，轻食+甜品<br>
+        - <strong>La Petite Venise</strong> — 大运河尽头，意式/法式简餐 ~€15-25/人<br>
+        - 或到凡尔赛镇上 Rue de Satory 的小餐馆，更实惠
+      </div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">14:00</div><div class="duration">45min</div></div>
+    <div class="content-col">
+      <h3>返回巴黎 <span class="tag tag-transport">RER C</span></h3>
+      <p>RER C 返回巴黎市区</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">15:00</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>老佛爷百货 / 春天百货 <span class="tag tag-spot">购物</span></h3>
+      <p>Galeries Lafayette 或 Printemps Haussmann，免税购物。老佛爷顶楼露台可免费看巴黎全景</p>
+      <div class="tip-box">办理退税单（满€100.01起退12%），保留收据</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:30</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>地铁前往蒙马特 <span class="tag tag-transport">地铁</span></h3>
+      <p>M12 到 Abbesses 站（有电梯，比 Anvers 站对父母友好）</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">18:00</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>蒙马特高地 + 圣心大教堂 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>日落时分最美（4月日落约20:15）</p>
+      <div class="highlights">
+        <strong>路线：</strong>Abbesses站 → 爱墙(Le Mur des Je t'aime) → 小丘广场看画家作画 → 圣心大教堂（免费入内）→ 大教堂前台阶坐看巴黎全景日落
+      </div>
+      <div class="warn-box">蒙马特有上坡路，但从 Abbesses 站出来有缆车（Funiculaire，地铁票可用）直达圣心大教堂，父母无需爬坡</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 4 ==================== -->
+<div class="day-card">
+<div class="day-header transit">
+  <span>Day 4 | 4.03 周五 | 巴黎 → 科隆</span>
+  <span class="day-sub">凯旋门 + 香街 + 塞纳河 + Eurostar + 科隆大教堂夜景</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:30</div><div class="duration">1.5h</div></div>
+    <div class="content-col">
+      <h3>凯旋门 + 香榭丽舍大街 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>地铁到 Charles de Gaulle - Etoile 站。凯旋门外观拍照（284级台阶无电梯，父母不建议登顶），然后沿香榭丽舍大街悠闲漫步</p>
+      <div class="highlights"><strong>重点：</strong>凯旋门下方仰拍浮雕（《马赛曲》等）、香街上感受巴黎的气派、路易威登旗舰店打卡</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">10:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>塞纳河游船 Bateaux Mouches <span class="tag tag-spot">景点</span></h3>
+      <p>从香街步行15分钟到 Pont de l'Alma 码头。约1小时游览，沿途经过卢浮宫、圣母院、铁塔等主要地标。船上有中文解说</p>
+      <div class="tip-box">提前网上买票约 €16/人。路线：凯旋门 → 香街 → Pont de l'Alma（塞纳河），一条线走过去，不走回头路</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">11:00</div><div class="duration">1.5h</div></div>
+    <div class="content-col">
+      <h3>退房巴黎圣母院公寓 + 自由活动 <span class="tag tag-hotel">退房</span><span class="tag tag-tip">灵活</span></h3>
+      <p>退房 Airbnb「两间不同凡响的客房，位于巴黎圣母院」，取行李。在公寓附近街区最后逛一逛巴黎</p>
+      <div class="tip-box">Airbnb退房时间通常11:00前，请提前与房东确认。退房前检查是否有遗留物品</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">12:30</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>前往巴黎北站 + 安检 <span class="tag tag-transport">交通</span></h3>
+      <p>巴黎北站 Gare du Nord，Eurostar 需提前30分钟安检</p>
+      <div class="warn-box">建议至少提前45-60分钟到站！国际列车安检较严，类似机场流程。带好护照</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">13:47</div><div class="duration">3.5h</div></div>
+    <div class="content-col">
+      <h3>Eurostar 巴黎 → 科隆 <span class="tag tag-transport">高铁</span></h3>
+      <p>Paris Gare du Nord → Koln Hbf，约3.5小时直达。€139/人</p>
+      <div class="tip-box">车上可午休，补充体力。每人可携带2件行李+1件手提，无重量限制</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:14</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>抵达科隆 + 入住 Ina Hotel Royal <span class="tag tag-transport">交通</span><span class="tag tag-hotel">入住</span></h3>
+      <p>科隆火车站出来就能看到大教堂！入住 Ina Hotel Royal（Trip.com预订，1晚）。酒店放好行李后出发</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">18:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>科隆大教堂 Kolner Dom <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>免费入内参观（登塔 €6/人，533级台阶，父母酌情）。哥特式建筑杰作，联合国教科文遗产</p>
+      <div class="highlights"><strong>重点：</strong>内部彩色玻璃窗（Richter Window当代彩窗极美）、三王圣龛、外部夜景灯光</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">19:00</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>霍亨索伦桥 + 巧克力博物馆 + 老城 <span class="tag tag-spot">景点</span><span class="tag tag-food">餐饮</span></h3>
+      <p>霍亨索伦桥上看大教堂倒影（日落绝佳拍摄点）→ 巧克力博物馆（约€14.50/人，关门前可能来不及，备选次日早上）→ 老城河畔漫步</p>
+      <div class="food-box">
+        <strong>晚餐推荐：</strong><br>
+        - <strong>Fruh am Dom</strong> — 大教堂旁百年老店，Kolsch啤酒+烤猪肘，€15-25/人<br>
+        - 科隆啤酒文化：服务员会不停续杯200ml小杯Kolsch，放杯垫在杯上表示不要了
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 5 ==================== -->
+<div class="day-card">
+<div class="day-header de">
+  <span>Day 5 | 4.04 周六 | 科隆 → 慕尼黑</span>
+  <span class="day-sub">ICE高铁 + 安联球场 + 玛利亚广场</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">07:30</div><div class="duration">4.5h</div></div>
+    <div class="content-col">
+      <h3>退房 Ina Hotel Royal + ICE 高铁 科隆 → 慕尼黑 <span class="tag tag-hotel">退房</span><span class="tag tag-transport">交通</span></h3>
+      <p>早起退房 Ina Hotel Royal，前往科隆火车站。选最早班次（约07:30-08:00出发），12:00左右抵达慕尼黑。Super Sparpreis €17.90-49.90/人</p>
+      <div class="tip-box">车上有wifi和餐车。建议在科隆火车站面包店买早餐带上车</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">12:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>入住慕尼黑「安静的绿洲」+ 午餐 <span class="tag tag-hotel">入住</span><span class="tag tag-food">餐饮</span></h3>
+      <p>入住 Airbnb「安静的绿洲」（整套公寓，¥2,964/3晚，含停车位€11/天）。放好行李后在火车站或玛利亚广场附近吃午餐</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">13:30</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>U6 前往安联球场 <span class="tag tag-transport">地铁</span></h3>
+      <p>Marienplatz → Frottmaning（U6线约16分钟）+ 步行10分钟到球场</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">14:00</div><div class="duration">2.5h</div></div>
+    <div class="content-col">
+      <h3>安联球场 Arena Tour + 拜仁博物馆 <span class="tag tag-spot">景点</span></h3>
+      <p>Combi票 €25/人。Arena Tour 约1小时（球员通道、更衣室、球场草坪），博物馆约1-1.5小时</p>
+      <div class="warn-box">博物馆2026年4月13日起装修关闭，4月4日去是末班车！务必提前网上买票</div>
+      <div class="highlights"><strong>重点：</strong>踏上球场草坪拍照、球员更衣室、6座欧冠奖杯展厅</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:00</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>返回市中心 <span class="tag tag-transport">地铁</span></h3>
+      <p>U6 返回 Marienplatz</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:30</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>玛利亚广场 Marienplatz <span class="tag tag-spot">景点</span></h3>
+      <p>新市政厅哥特式建筑、谷物市场 Viktualienmarkt（周六营业到下午）</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">18:30</div><div class="duration">晚间</div></div>
+    <div class="content-col">
+      <h3>皇家啤酒馆 Hofbrauhaus <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">
+        <strong>必体验：</strong>白香肠Weisswurst + 椒盐卷饼Bretzel + 1升大杯HB啤酒。人均 €15-25。现场有巴伐利亚乐队演奏，氛围极佳
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 6 ==================== -->
+<div class="day-card">
+<div class="day-header de">
+  <span>Day 6 | 4.05 周日 | 慕尼黑 ↔ 国王湖</span>
+  <span class="day-sub">自驾 + 拉姆绍 + 国王湖游船</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>提车出发 <span class="tag tag-transport">自驾</span></h3>
+      <p>租车公司提车（建议SIXT/Europcar，选自动挡+全险）。慕尼黑 → 贝希特斯加登方向，约2小时车程</p>
+      <div class="warn-box">携带中国驾照 + 德语宣誓翻译件。德国高速不限速但建议开130km/h。出城后走A8高速</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">09:30</div><div class="duration">45min</div></div>
+    <div class="content-col">
+      <h3>拉姆绍 Ramsau bei Berchtesgaden <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>中途停靠，德国最常被拍摄的教堂 — 圣塞巴斯蒂安教堂。观景点就在路边，无需步行，非常适合父母</p>
+      <div class="highlights"><strong>经典机位：</strong>桥上拍教堂+溪流+远处雪山的明信片角度。附近的 Hintersee 湖也值得绕到湖边走走（平路）</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">10:30</div><div class="duration">3-4h</div></div>
+    <div class="content-col">
+      <h3>国王湖 Konigssee <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>停车场 Schonau（€5-7/天），步行5-10分钟到码头</p>
+      <div class="highlights">
+        <strong>游览安排：</strong><br>
+        - 电动船游湖：前往 St. Bartholomae（约35分钟单程）<br>
+        - 船上会有号手表演回音（湖面绝壁回声，经典体验）<br>
+        - 红顶教堂 St. Bartholomae 拍照 + 旁边餐厅吃现烤鳟鱼<br>
+        - 湖边漫步约30-40分钟
+      </div>
+      <div class="warn-box">4月初 Obersee（上湖）段游船可能尚未开放（通常4月中下旬才通航），仅能到 St. Bartholomae。建议出发前在 bayerische-seenschifffahrt.de 确认船班</div>
+      <div class="tip-box">往返 St. Bartholomae 约2.5小时（含游览）。船约每1-1.5小时一班，注意返程末班船时间</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">15:00</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>返回慕尼黑 <span class="tag tag-transport">自驾</span></h3>
+      <p>原路返回，约2小时。路上可在服务区休息</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:30</div><div class="duration">晚间</div></div>
+    <div class="content-col">
+      <h3>慕尼黑自由晚餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box"><strong>推荐：</strong>Augustiner Stammhaus（本地人最爱的啤酒馆，比HB更正宗）或谷物市场附近的餐厅</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 7 ==================== -->
+<div class="day-card">
+<div class="day-header de">
+  <span>Day 7 | 4.06 周一 | 慕尼黑 ↔ 新天鹅堡</span>
+  <span class="day-sub">自驾 + 玛丽恩桥 + 新天鹅堡 17:05</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">10:00</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>自驾前往菲森 Fussen <span class="tag tag-transport">自驾</span></h3>
+      <p>慕尼黑 → 菲森约2小时（A95/B17）。今天不赶早，让父母充分休息</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">12:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>菲森小镇午餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">菲森老城小镇很漂亮，在 Reichenstrasse 主街找餐厅吃巴伐利亚菜。比山上景区餐厅便宜很多</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">13:30</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>到达 Hohenschwangau 停车场 <span class="tag tag-transport">自驾</span></h3>
+      <p>停车 €10/天。从停车场到新天鹅堡需要上山</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">14:00</div><div class="duration">1.5h</div></div>
+    <div class="content-col">
+      <h3>玛丽恩桥 Marienbrucke <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>新天鹅堡最经典的拍摄角度！无需门票。从停车场步行上山约30-40分钟到城堡，再10分钟到桥</p>
+      <div class="highlights"><strong>经典机位：</strong>桥上正面拍新天鹅堡+阿尔卑斯山背景，任何季节的明信片都是这个角度</div>
+      <div class="tip-box">建议乘穿梭巴士上山（€2.50/人单程），节省父母体力。或马车（€8/人上山）。到城堡后步行10分钟到玛丽恩桥</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">15:30</div><div class="duration">1.5h</div></div>
+    <div class="content-col">
+      <h3>山下售票中心取票 + 等候 <span class="tag tag-tip">重要</span></h3>
+      <p>已购票17:05场次。需在入场前1.5小时到山下售票中心（Ticket Center Hohenschwangau）取实体票/验证</p>
+      <div class="warn-box">严格按预约时间入场，迟到作废！建议15:30下山取票，16:30开始上山等候</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:05</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>新天鹅堡 Audio Guide 导览 <span class="tag tag-spot">景点</span></h3>
+      <p>城堡内导览约30分钟（有中文语音导览）。禁止拍照、禁止背包入内</p>
+      <div class="highlights"><strong>重点：</strong>歌手厅（瓦格纳歌剧壁画）、王座厅（拜占庭风格金碧辉煌）、人工钟乳石洞穴、国王卧室</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">18:00</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>返回慕尼黑 <span class="tag tag-transport">自驾</span></h3>
+      <p>下山 + 驾车返回慕尼黑约2小时。晚上在慕尼黑简单吃</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 8 ==================== -->
+<div class="day-card">
+<div class="day-header transit">
+  <span>Day 8 | 4.07 周二 | 慕尼黑 → 格林德瓦</span>
+  <span class="day-sub">还车 + 跨国列车 + 瑞士木屋</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>退房慕尼黑「安静的绿洲」+ 还车 <span class="tag tag-hotel">退房</span><span class="tag tag-transport">交通</span></h3>
+      <p>退房 Airbnb「安静的绿洲」，驾车前往慕尼黑火车站(Hbf)附近还车点。预留1小时余量（检车、加油、手续）</p>
+      <div class="tip-box">还车前加满油！德国加油站用德语 "Super/E5" = 95号汽油。退房前检查公寓内是否有遗留物品</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">09:30</div><div class="duration">6-7h</div></div>
+    <div class="content-col">
+      <h3>跨国列车 慕尼黑 → 格林德瓦 <span class="tag tag-transport">火车</span></h3>
+      <p>Munchen Hbf → Zurich HB → Interlaken Ost → Grindelwald（换乘2次）</p>
+      <div class="highlights">
+        <strong>建议路线：</strong><br>
+        - 慕尼黑→苏黎世：约3.5-4小时（EC列车，沿途湖光山色）<br>
+        - 苏黎世→因特拉肯：约2小时<br>
+        - 因特拉肯→格林德瓦：约30分钟（齿轨列车，开始进入阿尔卑斯）
+      </div>
+      <div class="tip-box">在 SBB 官网一站式购票。购买 Swiss Half Fare Card（CHF 150/人），从进入瑞士段起所有火车和缆车均半价</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:00</div><div class="duration">晚间</div></div>
+    <div class="content-col">
+      <h3>抵达格林德瓦 + 入住 Burglauenen 公寓 <span class="tag tag-hotel">入住</span><span class="tag tag-tip">休息</span></h3>
+      <p>入住 Airbnb「Burglauenen」（2卧室公寓，¥3,843/2晚，★4.76）。Coop超市采购晚餐食材（瑞士餐厅贵，超市自炊省钱）</p>
+      <div class="food-box"><strong>晚餐建议：</strong>超市买瑞士芝士、面包、火腿、巧克力，在木屋里吃。或去 Hotel Wetterhorn 餐厅吃瑞士芝士火锅（Fondue，约 CHF 28-35/人）</div>
+      <div class="tip-box">今晚查明天天气！jungfrau.ch 有实时山顶摄像头。晴天才值得上少女峰</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 9 ==================== -->
+<div class="day-card">
+<div class="day-header ch">
+  <span>Day 9 | 4.08 周三 | 少女峰大区</span>
+  <span class="day-sub">欧洲之巅 3454m + 冰川 + 冰宫</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:00</div><div class="duration">45min</div></div>
+    <div class="content-col">
+      <h3>艾格快线上山 Eiger Express <span class="tag tag-transport">缆车</span></h3>
+      <p>从 Grindelwald Terminal 乘艾格快线到 Eigergletscher（15分钟），换齿轨列车到 Jungfraujoch（30分钟）</p>
+      <div class="tip-box">选艾格快线上山（比传统路线省40分钟），回程走传统路线经 Kleine Scheidegg（更有风景）</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">09:00</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>少女峰山顶 Jungfraujoch <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>海拔3454米，欧洲最高火车站</p>
+      <div class="highlights">
+        <strong>山顶活动安排（约2小时）：</strong><br>
+        - 斯芬克斯观景台（15-20min）— 360度俯瞰阿莱奇冰川，晴天可看到法德瑞三国<br>
+        - 冰宫 Ice Palace（15-20min）— 冰川内部隧道+冰雕<br>
+        - 阿尔卑斯震撼展 Alpine Sensation（15min）— 少女峰铁路历史<br>
+        - 高原步道 Plateau Walk（15-20min）— 户外雪地步道到观景点<br>
+        - Lindt 巧克力天堂（10min）— 全球海拔最高的巧克力店
+      </div>
+      <div class="warn-box">
+        4月山顶温度约 -10°C 至 -5°C！务必带：厚羽绒服、手套、帽子、墨镜、防晒霜（高海拔紫外线极强）。<br>
+        海拔3454m可能有轻微高反，走慢点、多喝水。父母若感不适立即下山
+      </div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">11:00</div><div class="duration">1.5h</div></div>
+    <div class="content-col">
+      <h3>传统路线下山 via Kleine Scheidegg <span class="tag tag-transport">齿轨列车</span></h3>
+      <p>回程走传统路线，经 Kleine Scheidegg 下山，沿途欣赏艾格峰北壁</p>
+      <div class="food-box"><strong>午餐推荐：</strong>在 Kleine Scheidegg 车站餐厅吃午餐，窗外正对艾格峰+僧侣峰，绝美景观餐厅</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">13:00</div><div class="duration">3h</div></div>
+    <div class="content-col">
+      <h3>下午选项 <span class="tag tag-tip">灵活</span></h3>
+      <div class="option" style="border-color: #c8e6c9;">
+        <h4 style="color: #2E7D32;">选项A：菲斯特 First 悬崖步道（体力充足时）</h4>
+        <p>从格林德瓦乘缆车25分钟到 First（2168m），悬崖步道免费走。往返约2.5小时。另有 First Flyer 高空飞索等项目</p>
+      </div>
+      <div class="option" style="border-color: #c8e6c9;">
+        <h4 style="color: #2E7D32;">选项B：格林德瓦小镇漫步（父母需休息时）</h4>
+        <p>小镇本身就是明信片风景。散步、买手信、喝咖啡、拍雪山+木屋，非常惬意</p>
+      </div>
+      <div class="tip-box">建议根据父母上山后的体力状态来决定。少女峰已经是当天最重要的体验</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 10 ==================== -->
+<div class="day-card">
+<div class="day-header transit">
+  <span>Day 10 | 4.09 周四 | 格林德瓦 → 威尼斯</span>
+  <span class="day-sub">跨境列车 + 阿尔卑斯风光 + 贡多拉日落</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:00</div><div class="duration">7-8h</div></div>
+    <div class="content-col">
+      <h3>退房 Burglauenen + 跨境列车 格林德瓦 → 威尼斯 <span class="tag tag-hotel">退房</span><span class="tag tag-transport">火车</span></h3>
+      <p>退房 Airbnb「Burglauenen」。Grindelwald → Interlaken Ost → Spiez → Milano Centrale → Venezia S. Lucia</p>
+      <div class="highlights">
+        <strong>沿途风景：</strong><br>
+        - 因特拉肯→Spiez：图恩湖畔，湖光倒映雪山<br>
+        - Spiez→米兰：穿越 Lotschberg 隧道进入意大利北部<br>
+        - 米兰→威尼斯：意北平原田园风光
+      </div>
+      <div class="tip-box">瑞士段用半价卡，意铁段（米兰→威尼斯）单独买 Super Economy 可低至 €9.90/人。米兰中央站不出站直接换乘</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">16:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>抵达威尼斯 + 入住 Ca'Falcao <span class="tag tag-transport">水上巴士</span><span class="tag tag-hotel">入住</span></h3>
+      <p>Venezia Santa Lucia 火车站到达。购买 24小时水上巴士通票（€21/人），水上巴士前往入住 Airbnb「Ca'Falcao」（¥2,900/2晚，★4.75）</p>
+      <div class="tip-box">威尼斯很多桥有台阶无坡道，拉杆箱走路很辛苦。到达后与房东确认入住方式</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:30</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>贡多拉 + 大运河日落 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>日落前乘贡多拉穿梭水巷（约30分钟，€80/船，3人刚好）</p>
+      <div class="highlights"><strong>最佳上船点：</strong>圣马可盆地附近，可看到 San Giorgio Maggiore 教堂的日落剪影。或从里亚托桥附近出发，穿大运河看两岸宫殿</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">19:30</div><div class="duration">晚间</div></div>
+    <div class="content-col">
+      <h3>晚餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">
+        <strong>推荐：</strong><br>
+        - <strong>Anice Stellato</strong>（Cannaregio区）— 本地人最爱，海鲜意面，€25-35/人<br>
+        - 或在里亚托桥附近的 bacaro（威尼斯小酒馆）吃 cicchetti（威尼斯版tapas），站着吃，便宜又正宗
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 11 ==================== -->
+<div class="day-card">
+<div class="day-header it">
+  <span>Day 11 | 4.10 周五 | 威尼斯深度游</span>
+  <span class="day-sub">圣马可 + 总督府 + 里亚托 + 彩色岛</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>清晨圣马可广场 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>清晨8点的圣马可广场几乎没人，是拍空旷广场的唯一机会。圣马可大教堂外部拍照（教堂约9:30开门，免费入内）</p>
+      <div class="highlights"><strong>重点：</strong>广场上的钟楼倒影、大教堂金色马赛克外墙、清晨的光线从海面打来</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">09:30</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>总督府 Palazzo Ducale + 叹息桥 <span class="tag tag-spot">景点</span></h3>
+      <p>约€30/人（65+优惠€22）。内部金碧辉煌，世界最大油画《天堂》在此。从内部走过叹息桥</p>
+      <div class="highlights"><strong>重点：</strong>大议事厅（世界最大油画）、叹息桥内部通道、监狱牢房、黄金楼梯</div>
+      <div class="tip-box">提前网上购票避免排队。内部有很多楼梯，父母注意体力分配</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">11:30</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>里亚托桥 Ponte di Rialto <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>步行约15分钟到达。桥上拍大运河弯道全景</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">12:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>午餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">
+        <strong>推荐：</strong><br>
+        - <strong>Trattoria alla Madonna</strong>（里亚托桥旁）— 经典威尼斯海鲜，€25-40/人<br>
+        - 或在 Rialto 鱼市场旁的小餐馆吃最新鲜的海鲜
+      </div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">13:30</div><div class="duration">3.5h</div></div>
+    <div class="content-col">
+      <h3>彩色岛 Burano <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>水上巴士12号线从 Fondamente Nove 出发，约45分钟到达</p>
+      <div class="highlights">
+        <strong>Burano 安排：</strong><br>
+        - 在彩色房子间漫步拍照（1-1.5小时）<br>
+        - 每条小巷都是不同的色彩搭配，极其出片<br>
+        - 品尝当地特色 Bussolai 黄油饼干
+      </div>
+      <div class="food-box"><strong>岛上推荐：</strong>Trattoria da Romano — 招牌 risotto di go（虾虎鱼烩饭），如果午餐没吃饱可以在这里补充</div>
+      <div class="tip-box"><strong>备选方案（如果父母体力不够去彩色岛）：</strong>改去 <strong>圣乔治马焦雷岛 San Giorgio Maggiore</strong>（水上巴士2号线从San Marco仅5分钟）。登钟楼€8/人，俯瞰整个威尼斯全景，比圣马可钟楼人少10倍，景色更佳。省下的2小时用来在威尼斯小巷悠闲漫步+gelato</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:00</div><div class="duration">晚间</div></div>
+    <div class="content-col">
+      <h3>返回主岛 + 自由漫步 <span class="tag tag-tip">灵活</span></h3>
+      <p>水上巴士返回主岛。晚上在威尼斯的小巷中迷路漫步，这就是最好的体验。告别水城</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 12 ==================== -->
+<div class="day-card">
+<div class="day-header transit">
+  <span>Day 12 | 4.11 周六 | 威尼斯 → 罗马</span>
+  <span class="day-sub">高铁 + 西班牙广场 + 许愿池</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">09:00</div><div class="duration">3.5h</div></div>
+    <div class="content-col">
+      <h3>退房 Ca'Falcao + 高铁 威尼斯 → 罗马 <span class="tag tag-hotel">退房</span><span class="tag tag-transport">意铁</span></h3>
+      <p>退房 Airbnb「Ca'Falcao」，水上巴士前往 Venezia S. Lucia 火车站。→ Roma Termini，Trenitalia/Italo 约3.5小时。提前买 Super Economy 低至 €19/人</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">12:30</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>入住 Chroma Tessera B&B + 午餐 <span class="tag tag-hotel">入住</span><span class="tag tag-food">餐饮</span></h3>
+      <p>入住 Airbnb「Chroma Tessera」B&B（¥2,900/2晚，★4.81）。在 Monti 区（Termini东南，步行10分钟）找餐厅</p>
+      <div class="food-box"><strong>Monti区推荐：</strong>La Carbonara（百年老店，招牌 Carbonara 意面）或街边 pizza al taglio（切片披萨，€3-5一份，罗马特色快餐）</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">14:00</div><div class="duration">1.5h</div></div>
+    <div class="content-col">
+      <h3>西班牙广场 Piazza di Spagna <span class="tag tag-spot">景点</span></h3>
+      <p>地铁A线到 Spagna 站。著名的西班牙大台阶 + Via Condotti 奢侈品街</p>
+      <div class="highlights"><strong>重点：</strong>台阶上拍照（禁止坐在台阶上！）、Babington's Tea Room（1893年开业）、附近买买买</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">16:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>特雷维喷泉 Fontana di Trevi <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>从西班牙广场步行约10分钟。许愿池：右手持硬币过左肩抛入，传说会重返罗马</p>
+      <div class="warn-box">许愿池周围非常拥挤。建议傍晚来（光线好，人相对少些）。注意防扒手</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">17:30</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>万神殿 Pantheon <span class="tag tag-spot">景点</span></h3>
+      <p>步行约10分钟可达。门票 €5/人（2023年起收费）。内部穹顶的圆孔（Oculus）是2000年前的建筑奇迹</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">19:00</div><div class="duration">晚间</div></div>
+    <div class="content-col">
+      <h3>罗马晚餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">
+        <strong>罗马四大经典意面：</strong>Carbonara、Cacio e Pepe、Amatriciana、Gricia<br>
+        <strong>推荐：</strong>Roscioli（预约制）或 Trattoria Da Enzo（Trastevere区，排队但值得）
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 13 ==================== -->
+<div class="day-card">
+<div class="day-header it">
+  <span>Day 13 | 4.12 周日 | 斗兽场 + 罗马老城漫步</span>
+  <span class="day-sub">古罗马遗迹 + 纳沃纳广场 + 特拉斯提弗列</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:30</div><div class="duration">15min</div></div>
+    <div class="content-col">
+      <h3>前往斗兽场 <span class="tag tag-transport">步行/地铁</span></h3>
+      <p>地铁B线到 Colosseo 站，出站即到</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">09:00</div><div class="duration">3.5-4h</div></div>
+    <div class="content-col">
+      <h3>古罗马三合一：斗兽场 + 遗址 + 帕拉蒂尼山 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>建议购买含竞技场地面层(Arena)的票 €24/人，体验感翻倍</p>
+      <div class="highlights">
+        <strong>最佳游览顺序（省体力版）：</strong><br>
+        1. <strong>帕拉蒂尼山 Palatine Hill</strong>（1小时）— 从 Via di San Gregorio 入口进入（人少！），法尔内塞花园、俯瞰古罗马广场全景<br>
+        2. <strong>古罗马广场 Roman Forum</strong>（45分钟）— 从山上自然下行进入广场，提图斯凯旋门、萨图尔努斯神殿、神圣大道<br>
+        3. <strong>斗兽场 Colosseum</strong>（1-1.5小时）— 最后参观。竞技场地面层可以走到角斗场中央！地下层看到角斗士和野兽的通道
+      </div>
+      <div class="warn-box">提前30天放票，热门日期当天售罄！需实名制（护照姓名匹配）。选早上9:00时段人最少</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">13:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>午餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">斗兽场附近 Monti 区：<strong>Ai Tre Scalini</strong>（当地人小酒馆）或附近 pizza al taglio 快速解决</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">14:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>午后休整 <span class="tag tag-tip">休息</span></h3>
+      <p>回酒店短暂休息，给父母恢复上午的体力。不用赶时间，下午是悠闲漫步</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">15:00</div><div class="duration">45min</div></div>
+    <div class="content-col">
+      <h3>纳沃纳广场 Piazza Navona <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>地铁/公交到达，或从酒店打车（约€8-10）。罗马最美的巴洛克广场</p>
+      <div class="highlights">
+        <strong>重点：</strong><br>
+        - <strong>四河喷泉</strong> Fontana dei Quattro Fiumi — 贝尔尼尼杰作，代表尼罗河、恒河、多瑙河、拉普拉塔河<br>
+        - <strong>摩尔人喷泉</strong>和<strong>海神喷泉</strong>分列广场两端<br>
+        - 广场上坐下来喝杯咖啡，看街头艺人表演
+      </div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">16:00</div><div class="duration">2h</div></div>
+    <div class="content-col">
+      <h3>特拉斯提弗列 Trastevere 漫步 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>从纳沃纳广场步行约15分钟过桥即到。罗马最有生活气息的老街区</p>
+      <div class="highlights">
+        <strong>漫步路线：</strong><br>
+        - 鹅卵石小巷 + 爬满常春藤的赭色外墙，处处是拍照背景<br>
+        - <strong>圣母大殿 Santa Maria in Trastevere</strong> — 罗马最古老的教堂之一，金色马赛克外墙，免费参观<br>
+        - 沿途有很多手工艺品小店、gelato冰淇淋店
+      </div>
+      <div class="tip-box">Trastevere 全程平路无台阶，非常适合父母悠闲漫步。傍晚时分最有氛围</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">18:30</div><div class="duration">晚间</div></div>
+    <div class="content-col">
+      <h3>罗马最后的晚餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">
+        <strong>Trastevere 区是罗马最佳晚餐区：</strong><br>
+        - <strong>Da Enzo al 29</strong> — 罗马本地人排队名店，经典 Cacio e Pepe 和 Carbonara，€15-25/人<br>
+        - <strong>Tonnarello</strong> — 氛围绝佳的户外座位，招牌手工意面<br>
+        - <strong>Suppli</strong> — 罗马街头小吃名店，炸饭团（Suppli）€2-3/个，可以当前菜<br>
+        <span style="color:#C62828;">热门餐厅建议17:30-18:00到（意大利人通常20:00后才吃晚餐，早去不用排队）</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DAY 14 ==================== -->
+<div class="day-card">
+<div class="day-header it">
+  <span>Day 14 | 4.13 周一 | 梵蒂冈 → 回国</span>
+  <span class="day-sub">梵蒂冈博物馆 + 西斯廷 + 圣彼得 → FCO 20:30</span>
+</div>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">07:00</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>退房 Chroma Tessera + 行李寄存 <span class="tag tag-hotel">退房</span><span class="tag tag-tip">重要</span></h3>
+      <p>退房 Airbnb「Chroma Tessera」B&B。行李寄存在 Roma Termini 火车站的寄存柜（约 €6-12/件/6小时）。轻装出发</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">07:30</div><div class="duration">20min</div></div>
+    <div class="content-col">
+      <h3>前往梵蒂冈 <span class="tag tag-transport">地铁</span></h3>
+      <p>地铁A线 Termini → Ottaviano 站，步行5分钟到梵蒂冈博物馆入口</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">08:00</div><div class="duration">3h</div></div>
+    <div class="content-col">
+      <h3>梵蒂冈博物馆 + 西斯廷礼拜堂 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
+      <p>早鸟08:00时段入场。€25/人（含预订费）</p>
+      <div class="highlights">
+        <strong>推荐路线（约2.5-3小时）：</strong><br>
+        1. 入口庭院 → <strong>庇护-克莱孟博物馆</strong>（拉奥孔群雕、阿波罗望楼）<br>
+        2. <strong>地图廊 Gallery of Maps</strong>（120米长廊，40幅意大利地图，天花板极美）<br>
+        3. <strong>拉斐尔画室</strong>（《雅典学院》所在地！与蒙娜丽莎齐名的文艺复兴巅峰）<br>
+        4. <strong>西斯廷礼拜堂</strong>（米开朗基罗天顶画《创世纪》+ 祭坛画《最后的审判》）<br>
+        5. 西斯廷礼拜堂左侧有直通圣彼得大教堂的暗门 → 直接进入，免去外面排队！
+      </div>
+      <div class="tip-box">西斯廷内禁止拍照和大声说话。进入后抬头看天顶，找到《创造亚当》（上帝与亚当指尖相触）</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">11:00</div><div class="duration">1.5h</div></div>
+    <div class="content-col">
+      <h3>圣彼得大教堂 St. Peter's Basilica <span class="tag tag-spot">景点</span></h3>
+      <p>从西斯廷暗门直接进入，免费参观</p>
+      <div class="highlights">
+        <strong>必看：</strong><br>
+        - 米开朗基罗《圣殇》Pieta（入口右侧第一个小堂，玻璃罩保护）<br>
+        - 贝尔尼尼青铜华盖 Baldachin（教堂中央，29米高）<br>
+        - 圣彼得宝座 Cathedra Petri（最深处）<br>
+        - 登穹顶（€8电梯+步行 / €10全步行）— 俯瞰整个圣彼得广场和罗马。但320级台阶，父母量力
+      </div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">12:30</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>午餐 <span class="tag tag-food">餐饮</span></h3>
+      <div class="food-box">梵蒂冈附近 Prati 区有很多不错的餐厅。<strong>推荐：</strong>Pizzarium Bonci（罗马最佳切片披萨，米其林推荐，步行10分钟）</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">14:00</div><div class="duration">1h</div></div>
+    <div class="content-col">
+      <h3>返回 Termini 取行李 <span class="tag tag-transport">地铁</span></h3>
+      <p>地铁A线返回 Termini 取寄存行李</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">15:30</div><div class="duration">30min</div></div>
+    <div class="content-col">
+      <h3>Leonardo Express → FCO 机场 <span class="tag tag-transport">机场快线</span></h3>
+      <p>€14/人，Roma Termini → Fiumicino FCO，32分钟直达，每15分钟一班。当天现场自助机买票即可</p>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time-col"><div class="time-val">16:00</div><div class="duration">4.5h</div></div>
+    <div class="content-col">
+      <h3>FCO 机场 <span class="tag tag-transport">飞机</span></h3>
+      <p>16:00到达机场，预留4.5小时办理值机+安检+退税+免税店。20:30起飞</p>
+      <div class="tip-box">退税：在机场海关盖章（Customs Stamp），然后到退税公司柜台领取退款。建议至少提前3小时到</div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div><!-- end day-cards-container -->
+
+<!-- ==================== ACCOMMODATION ==================== -->
+<div class="accom">
+<h2>&#127968; 已确认住宿方案</h2>
+
+<!-- Paris -->
+<div class="accom-card">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/miso/Hosting-52696717/original/233ffed7-978c-4649-948f-0b3baa9c7be9.jpeg" alt="巴黎圣母院公寓">
+  <div class="accom-info">
+    <div class="accom-name">两间不同凡响的客房，位于巴黎圣母院 <span class="accom-badge">已预订</span></div>
+    <div class="accom-meta">
+      <span class="label">日期：</span>3.31-4.03（3晚）<br>
+      <span class="label">位置：</span>巴黎圣母院旁，步行可达卢浮宫/圣礼拜堂<br>
+      <span class="label">房型：</span>Airbnb 整套公寓，2卧室<br>
+      <span class="label">价格：</span><span class="accom-price">¥5,273（3晚总价）</span>
+    </div>
+  </div>
+</div>
+
+<!-- Cologne -->
+<div class="accom-card">
+  <img class="accom-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Koelner_Dom_bei_Nacht_-_Suedseite.jpg/800px-Koelner_Dom_bei_Nacht_-_Suedseite.jpg" alt="科隆大教堂">
+  <div class="accom-info">
+    <div class="accom-name">Ina Hotel Royal（Trip.com 预订）<span class="accom-badge">已预订</span></div>
+    <div class="accom-meta">
+      <span class="label">日期：</span>4.03-4.04（1晚）<br>
+      <span class="label">位置：</span>科隆大教堂/火车站步行范围内<br>
+      <span class="label">房型：</span>酒店三人间<br>
+      <span class="label">优势：</span>次日一早赶ICE去慕尼黑极方便
+    </div>
+  </div>
+</div>
+
+<!-- Munich -->
+<div class="accom-card">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/hosting/Hosting-4161164/original/22eacbc6-f5f6-4d8b-9fd2-aa12c09a76db.jpeg" alt="慕尼黑安静的绿洲">
+  <div class="accom-info">
+    <div class="accom-name">安静的绿洲 — 10分钟到市区+靠近河流 <span class="accom-badge">已预订</span></div>
+    <div class="accom-meta">
+      <span class="label">日期：</span>4.04-4.07（3晚）<br>
+      <span class="label">位置：</span>慕尼黑，10分钟到市区，靠近伊萨尔河<br>
+      <span class="label">房型：</span>Airbnb 整套公寓<br>
+      <span class="label">价格：</span><span class="accom-price">¥2,964（3晚总价）</span><br>
+      <span class="label">停车：</span>€11/天（自驾日需要）
+    </div>
+  </div>
+</div>
+
+<!-- Grindelwald -->
+<div class="accom-card">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/9995e72c-a7d0-4749-b4a7-08d1e52e30f5.jpg" alt="格林德瓦公寓">
+  <div class="accom-info">
+    <div class="accom-name">Grindelwald Burglauenen 公寓 <span class="accom-badge">已预订</span></div>
+    <div class="accom-meta">
+      <span class="label">日期：</span>4.07-4.09（2晚）<br>
+      <span class="label">位置：</span>Burglauenen，格林德瓦镇附近<br>
+      <span class="label">房型：</span>Airbnb 整套公寓 | <span class="accom-rating">&#9733; 4.76</span>（659条评价）<br>
+      <span class="label">价格：</span><span class="accom-price">¥3,843（2晚总价）</span><br>
+      <span class="label">亮点：</span>阿尔卑斯山景，近艾格快线出发站
+    </div>
+  </div>
+</div>
+
+<!-- Venice -->
+<div class="accom-card">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/12488841/0eda2764_original.jpg" alt="威尼斯Ca'Falcao">
+  <div class="accom-info">
+    <div class="accom-name">Ca'Falcao <span class="accom-badge">已预订</span></div>
+    <div class="accom-meta">
+      <span class="label">日期：</span>4.09-4.11（2晚）<br>
+      <span class="label">位置：</span>Cannaregio区，步行可达圣马可广场/里亚托桥<br>
+      <span class="label">房型：</span>Airbnb 整套房子 | <span class="accom-rating">&#9733; 4.75</span>（497条评价）<br>
+      <span class="label">价格：</span><span class="accom-price">¥2,900（2晚含税）</span><br>
+      <span class="label">亮点：</span>远离游客区但交通便利，性价比高
+    </div>
+  </div>
+</div>
+
+<!-- Rome -->
+<div class="accom-card">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/9a89e0d6-0b1f-472d-a102-4a1d33aecb0d.jpg" alt="罗马Chroma Tessera">
+  <div class="accom-info">
+    <div class="accom-name">Chroma Tessera（B&B 含早餐）<span class="accom-badge">已预订</span></div>
+    <div class="accom-meta">
+      <span class="label">日期：</span>4.11-4.13（2晚）<br>
+      <span class="label">位置：</span>Castro Pretorio区，距Termini火车站700米<br>
+      <span class="label">房型：</span>住宿加早餐 | <span class="accom-rating">&#9733; 4.81</span>（343条评价）<br>
+      <span class="label">价格：</span><span class="accom-price">¥2,900（2晚含税）</span><br>
+      <span class="label">亮点：</span>含早餐，地铁直达斗兽场/梵蒂冈，最后一天去机场方便
+    </div>
+  </div>
+</div>
+
+<div class="accom-total">
+  <strong>住宿总费用：</strong>约 ¥17,880 + 科隆酒店费用（Trip.com）<br>
+  <strong>入住提醒：</strong>Airbnb 一般14:00-15:00后入住，11:00前退房。提前和房东确认是否可寄存行李
+</div>
+</div>
+
+<!-- ==================== DAILY BUDGET SUMMARY ==================== -->
+<div class="summary">
+<h2>优化后每日体力评估 & 步行量</h2>
+<table>
+<tr><th>日期</th><th>体力强度</th><th>预计步行</th><th>父母友好度</th></tr>
+<tr><td>Day 1 抵达</td><td style="color:#4CAF50;">低</td><td>~1km</td><td>无压力</td></tr>
+<tr><td>Day 2 巴黎经典</td><td style="color:#FFC107;">中</td><td>~8km</td><td>卢浮宫+圣母院+圣礼拜堂+铁塔，节奏宽松</td></tr>
+<tr><td>Day 3 凡尔赛+蒙马特</td><td style="color:#FF9800;">中高</td><td>~10km</td><td>花园小火车+蒙马特缆车可大幅减少步行</td></tr>
+<tr><td>Day 4 巴黎→科隆</td><td style="color:#FFC107;">中</td><td>~6km</td><td>凯旋门+香街+游船，下午坐车休息</td></tr>
+<tr><td>Day 5 科隆→慕尼黑</td><td style="color:#FFC107;">中</td><td>~7km</td><td>火车+地铁为主，球场Tour有步行</td></tr>
+<tr><td>Day 6 国王湖</td><td style="color:#FFC107;">中</td><td>~5km</td><td>自驾舒适，湖边平路</td></tr>
+<tr><td>Day 7 新天鹅堡</td><td style="color:#FF9800;">中高</td><td>~6km</td><td>上山可坐巴士/马车，但仍有部分步行</td></tr>
+<tr><td>Day 8 跨境列车</td><td style="color:#4CAF50;">低</td><td>~3km</td><td>全天坐火车，很轻松</td></tr>
+<tr><td>Day 9 少女峰</td><td style="color:#FF9800;">中高</td><td>~4km</td><td>高海拔注意高反，走慢</td></tr>
+<tr><td>Day 10 跨境→威尼斯</td><td style="color:#FFC107;">中</td><td>~4km</td><td>火车+傍晚贡多拉</td></tr>
+<tr><td>Day 11 威尼斯</td><td style="color:#FF9800;">高</td><td>~10km</td><td>威尼斯桥多台阶多，用水上巴士减轻</td></tr>
+<tr><td>Day 12 →罗马</td><td style="color:#FFC107;">中</td><td>~7km</td><td>下午漫步为主</td></tr>
+<tr><td>Day 13 斗兽场+老城</td><td style="color:#FFC107;">中</td><td>~7km</td><td>上午遗迹+下午纳沃纳+Trastevere平路漫步</td></tr>
+<tr><td>Day 14 梵蒂冈→回国</td><td style="color:#FF9800;">中高</td><td>~6km</td><td>博物馆路线约7km，但可慢走</td></tr>
+</table>
+<p style="font-size: 0.82em; color: #666; margin-top: 10px;">
+  建议：高强度日的前一晚确保早睡。每天携带充足饮水。父母备好舒适的步行鞋。可随身带折叠凳（景区排队时坐）
+</p>
+</div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // ===== Helpers =====
+  var tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var tileAttr = '&copy; OpenStreetMap';
+
+  function numIcon(n, color) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="background:'+color+';color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.3);">'+n+'</div>',
+      iconSize: [26,26], iconAnchor: [13,13], popupAnchor: [0,-14]
+    });
+  }
+
+  function cityIcon(label, color) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="background:'+color+';color:#fff;width:auto;padding:4px 10px;border-radius:14px;font-size:12px;font-weight:700;white-space:nowrap;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);text-align:center;">'+label+'</div>',
+      iconSize: null, iconAnchor: [40,14], popupAnchor: [0,-16]
+    });
+  }
+
+  function popup(title, time, info) {
+    return '<b>'+title+'</b><br><span class="pop-time">'+time+'</span><br><span class="pop-info">'+info+'</span>';
+  }
+
+  // ===== OVERVIEW MAP =====
+  var om = L.map('overview-map', {scrollWheelZoom: false}).setView([47.0, 8.5], 5);
+  L.tileLayer(tileUrl, {attribution: tileAttr, maxZoom: 18}).addTo(om);
+
+  var cities = [
+    {name:'巴黎', pos:[48.8566,2.3522], dates:'Day 1-4 · 3/31-4/3', color:'#2B5797', info:'3晚 | 卢浮宫·铁塔·凡尔赛·圣母院'},
+    {name:'科隆', pos:[50.9375,6.9603], dates:'Day 4-5 · 4/3-4/4', color:'#D4A017', info:'1晚 | 大教堂·霍亨索伦桥'},
+    {name:'慕尼黑', pos:[48.1351,11.5820], dates:'Day 5-8 · 4/4-4/7', color:'#D4A017', info:'3晚 | 安联球场·国王湖·新天鹅堡'},
+    {name:'格林德瓦', pos:[46.6240,8.0414], dates:'Day 8-10 · 4/7-4/9', color:'#C62828', info:'2晚 | 少女峰·阿尔卑斯'},
+    {name:'威尼斯', pos:[45.4408,12.3155], dates:'Day 10-12 · 4/9-4/11', color:'#2E7D32', info:'2晚 | 圣马可·贡多拉·彩色岛'},
+    {name:'罗马', pos:[41.9028,12.4964], dates:'Day 12-14 · 4/11-4/13', color:'#2E7D32', info:'2晚 | 斗兽场·梵蒂冈·Trastevere'}
+  ];
+
+  var segments = [
+    {from:0, to:1, label:'Eurostar 高铁 · 3.5h'},
+    {from:1, to:2, label:'ICE 高铁 · 4.5h'},
+    {from:2, to:3, label:'EC列车 换乘2次 · 6-7h'},
+    {from:3, to:4, label:'跨境列车 经米兰 · 7-8h'},
+    {from:4, to:5, label:'Trenitalia 高铁 · 3.5h'}
+  ];
+
+  segments.forEach(function(s) {
+    var line = L.polyline([cities[s.from].pos, cities[s.to].pos], {color:'#5C3D99', weight:3, opacity:0.6, dashArray:'8,6'}).addTo(om);
+    line.bindPopup('<b>'+cities[s.from].name+' → '+cities[s.to].name+'</b><br>'+s.label);
+  });
+
+  cities.forEach(function(c) {
+    L.marker(c.pos, {icon: cityIcon(c.name, c.color)}).addTo(om)
+      .bindPopup('<b>'+c.name+'</b><br><span class="pop-time">'+c.dates+'</span><br><span class="pop-info">'+c.info+'</span>');
+  });
+
+  om.fitBounds(cities.map(function(c){return c.pos;}), {padding:[40,40]});
+
+  // ===== DAY MAPS DATA =====
+  var days = [
+    // Day 1
+    {color:'#2B5797', center:[48.9,2.45], zoom:11, markers:[
+      {pos:[49.0097,2.5479], title:'CDG 戴高乐机场', time:'18:15', info:'抵达 · 提取行李+过海关'},
+      {pos:[48.858,2.360], title:'酒店 Le Marais区', time:'20:30', info:'入住 · 附近bistro简餐'}
+    ], route:[[49.0097,2.5479],[48.858,2.360]]},
+    // Day 2
+    {color:'#2B5797', center:[48.857,2.315], zoom:14, markers:[
+      {pos:[48.8606,2.3376], title:'卢浮宫 Louvre', time:'09:00-12:00 · 3h', info:'蒙娜丽莎 · 胜利女神 · 断臂维纳斯<br>Passage Richelieu入口人少'},
+      {pos:[48.8530,2.3499], title:'巴黎圣母院 Notre-Dame', time:'13:00-13:30 · 30min', info:'免费入内 · 玫瑰窗 · 西立面雕刻'},
+      {pos:[48.8554,2.3451], title:'圣礼拜堂 Sainte-Chapelle', time:'13:30-14:00 · 30min', info:'€11.50 · 15扇彩色玻璃窗<br>哥特式彩窗巅峰之作'},
+      {pos:[48.8584,2.2945], title:'埃菲尔铁塔 Tour Eiffel', time:'14:45-17:00 · 2h', info:'€29.40 电梯到二层<br>战神广场拍全景'},
+      {pos:[48.8637,2.3136], title:'亚历山大三世桥', time:'17:00-17:30', info:'巴黎最美桥 · 镀金雕塑+铁塔背景'}
+    ], route:[[48.8606,2.3376],[48.8530,2.3499],[48.8554,2.3451],[48.8584,2.2945],[48.8637,2.3136]]},
+    // Day 3
+    {color:'#2B5797', center:[48.85,2.25], zoom:11, markers:[
+      {pos:[48.8049,2.1204], title:'凡尔赛宫 Versailles', time:'09:00-13:00 · 4h', info:'镜厅 · 国王大居室 · 花园小火车<br>RER C 35-40分钟到达'},
+      {pos:[48.8738,2.3320], title:'老佛爷百货', time:'15:00-17:00 · 2h', info:'免税购物 · 满€100退12%<br>顶楼露台免费全景'},
+      {pos:[48.8867,2.3431], title:'蒙马特 圣心大教堂', time:'18:00-20:00 · 2h', info:'爱墙 · 小丘广场画家 · 日落全景<br>缆车上山 父母不用爬坡'}
+    ], route:[[48.8049,2.1204],[48.8738,2.3320],[48.8867,2.3431]]},
+    // Day 4
+    {color:'#5C3D99', center:[49.9,4.6], zoom:6, markers:[
+      {pos:[48.8738,2.2950], title:'凯旋门 + 香榭丽舍大街', time:'08:30-10:00 · 1.5h', info:'外观拍照(不登顶284台阶)<br>香街漫步 · LV旗舰店'},
+      {pos:[48.8642,2.3012], title:'塞纳河游船 Bateaux Mouches', time:'10:00-11:00 · 1h', info:'€16/人 · 中文解说<br>Pont de l\'Alma 码头'},
+      {pos:[48.8809,2.3553], title:'巴黎北站 Gare du Nord', time:'12:30', info:'Eurostar 13:47 发车<br>提前45-60分钟安检'},
+      {pos:[50.9413,6.9583], title:'科隆大教堂 Kölner Dom', time:'18:00-19:00 · 1h', info:'免费 · 哥特式杰作 · UNESCO<br>Richter彩窗极美'},
+      {pos:[50.9413,6.965], title:'霍亨索伦桥 + Früh am Dom', time:'19:00+', info:'桥上拍大教堂日落<br>百年老店 Kölsch啤酒+烤猪肘'}
+    ], route:[[48.8738,2.295],[48.8642,2.3012],[48.8809,2.3553]], route2:[[50.9413,6.9583],[50.9413,6.965]]},
+    // Day 5
+    {color:'#D4A017', center:[49.5,9.3], zoom:6, markers:[
+      {pos:[50.9431,6.9586], title:'科隆火车站 Hbf', time:'07:30', info:'ICE出发 · 车上有wifi餐车<br>火车站面包店买早餐'},
+      {pos:[48.1374,11.5755], title:'慕尼黑 Marienplatz', time:'12:00', info:'到达+午餐+放行李<br>新市政厅·谷物市场'},
+      {pos:[48.2188,11.6247], title:'安联球场 Allianz Arena', time:'14:00-16:30 · 2.5h', info:'€25 Combi票<br>Arena Tour+拜仁博物馆(4.13关闭!)'},
+      {pos:[48.1375,11.5798], title:'皇家啤酒馆 Hofbräuhaus', time:'18:30+', info:'白香肠+椒盐卷饼+1L啤酒<br>€15-25/人 巴伐利亚乐队'}
+    ], route:[[50.9431,6.9586],[48.1374,11.5755],[48.2188,11.6247],[48.1374,11.5755],[48.1375,11.5798]]},
+    // Day 6
+    {color:'#D4A017', center:[47.9,12.1], zoom:8, markers:[
+      {pos:[48.1351,11.582], title:'慕尼黑 提车', time:'08:00', info:'SIXT/Europcar · 自动挡+全险<br>中国驾照+德语宣誓翻译件'},
+      {pos:[47.6068,12.8803], title:'拉姆绍教堂 Ramsau', time:'09:30-10:15 · 45min', info:'德国最常被拍摄的教堂<br>桥上拍教堂+溪流+雪山'},
+      {pos:[47.591,12.987], title:'国王湖 Königssee', time:'10:30-14:30 · 3-4h', info:'电动船游湖 · 回音号手表演<br>红顶教堂St.Bartholomae · 现烤鳟鱼'}
+    ], route:[[48.1351,11.582],[47.6068,12.8803],[47.591,12.987],[48.1351,11.582]]},
+    // Day 7
+    {color:'#D4A017', center:[47.85,10.9], zoom:8, markers:[
+      {pos:[48.1351,11.582], title:'慕尼黑出发', time:'10:00', info:'自驾2h · A95/B17<br>不赶早让父母休息'},
+      {pos:[47.5713,10.7014], title:'菲森小镇 Füssen', time:'12:00-13:00 · 1h', info:'Reichenstrasse主街午餐<br>巴伐利亚菜 比山上便宜'},
+      {pos:[47.5563,10.751], title:'玛丽恩桥 Marienbrücke', time:'14:00-15:30 · 1.5h', info:'新天鹅堡经典拍照角度<br>穿梭巴士€2.50上山'},
+      {pos:[47.5576,10.7498], title:'新天鹅堡 Neuschwanstein', time:'17:05 · 30min', info:'已购票! 严格按时入场<br>歌手厅 · 王座厅 · 禁止拍照'}
+    ], route:[[48.1351,11.582],[47.5713,10.7014],[47.5563,10.751],[47.5576,10.7498],[48.1351,11.582]]},
+    // Day 8
+    {color:'#C62828', center:[47.4,9.8], zoom:7, markers:[
+      {pos:[48.1403,11.56], title:'慕尼黑火车站', time:'08:00 还车 · 09:30 出发', info:'预留1h还车(检车加油手续)<br>Super/E5 = 95号汽油'},
+      {pos:[47.3769,8.5417], title:'苏黎世 Zürich HB', time:'中转', info:'EC列车 3.5-4h到达<br>沿途湖光山色'},
+      {pos:[46.6907,7.8692], title:'因特拉肯 Interlaken Ost', time:'中转', info:'换乘齿轨列车<br>开始进入阿尔卑斯'},
+      {pos:[46.624,8.0414], title:'格林德瓦 Grindelwald', time:'17:00 到达', info:'入住木屋 · Coop超市买晚餐<br>查明天jungfrau.ch天气!'}
+    ], route:[[48.1403,11.56],[47.3769,8.5417],[46.6907,7.8692],[46.624,8.0414]]},
+    // Day 9
+    {color:'#C62828', center:[46.59,8.02], zoom:13, markers:[
+      {pos:[46.624,8.0414], title:'格林德瓦 Terminal', time:'08:00', info:'艾格快线上山 15min<br>比传统路线省40分钟'},
+      {pos:[46.5474,7.9855], title:'少女峰 Jungfraujoch 3454m', time:'09:00-11:00 · 2h', info:'斯芬克斯观景台360° · 冰宫<br>Lindt巧克力天堂 · 穿暖!'},
+      {pos:[46.5853,7.9612], title:'Kleine Scheidegg', time:'11:00-12:30', info:'景观餐厅午餐<br>窗外正对艾格峰北壁'},
+      {pos:[46.659,8.0631], title:'First 悬崖步道 (备选)', time:'下午', info:'缆车25min上山 · 悬崖步道免费<br>或格林德瓦小镇漫步休息'}
+    ], route:[[46.624,8.0414],[46.5474,7.9855],[46.5853,7.9612],[46.624,8.0414]]},
+    // Day 10
+    {color:'#2E7D32', center:[46.0,10.2], zoom:6, markers:[
+      {pos:[46.624,8.0414], title:'格林德瓦出发', time:'08:00', info:'跨境列车 经因特拉肯'},
+      {pos:[45.4861,9.2042], title:'米兰 Milano Centrale', time:'中转', info:'不出站直接换乘<br>意铁段Super Economy €9.90起'},
+      {pos:[45.4414,12.3213], title:'威尼斯 Santa Lucia', time:'16:00 到达', info:'买24h水上巴士通票€21/人'},
+      {pos:[45.4343,12.3388], title:'贡多拉 日落巡游', time:'17:30-18:00', info:'€80/船 3人 · 约30分钟<br>San Giorgio教堂日落剪影'}
+    ], route:[[46.624,8.0414],[45.4861,9.2042],[45.4414,12.3213],[45.4343,12.3388]]},
+    // Day 11
+    {color:'#2E7D32', center:[45.46,12.375], zoom:12, markers:[
+      {pos:[45.4343,12.3388], title:'圣马可广场 San Marco', time:'08:00-09:30 · 1h', info:'清晨几乎无人 · 绝佳拍照<br>教堂约9:30开门 免费'},
+      {pos:[45.4337,12.3401], title:'总督府 Palazzo Ducale', time:'09:30-11:30 · 2h', info:'€30(65+€22) · 世界最大油画<br>叹息桥内部通道 · 黄金楼梯'},
+      {pos:[45.438,12.3359], title:'里亚托桥 Rialto', time:'11:30-12:00 · 30min', info:'大运河弯道全景<br>附近午餐'},
+      {pos:[45.4854,12.4171], title:'彩色岛 Burano', time:'13:30-17:00 · 3.5h', info:'水上巴士12号线45min到<br>彩色房子 · 极其出片'}
+    ], route:[[45.4343,12.3388],[45.4337,12.3401],[45.438,12.3359],[45.4854,12.4171]]},
+    // Day 12
+    {color:'#2E7D32', center:[43.7,12.45], zoom:6, markers:[
+      {pos:[45.4414,12.3213], title:'威尼斯出发', time:'09:00', info:'Trenitalia/Italo 高铁3.5h<br>Super Economy €19起'},
+      {pos:[41.901,12.5016], title:'罗马 Termini', time:'12:30', info:'入住 · Monti区午餐<br>La Carbonara百年老店'},
+      {pos:[41.906,12.4828], title:'西班牙广场 Piazza di Spagna', time:'14:00-15:30 · 1.5h', info:'大台阶(禁止坐!) · Via Condotti'},
+      {pos:[41.9009,12.4833], title:'特雷维喷泉 Trevi', time:'16:00-17:00 · 1h', info:'许愿池 · 右手过左肩抛硬币<br>注意防扒手'},
+      {pos:[41.8986,12.4769], title:'万神殿 Pantheon', time:'17:30-18:30 · 1h', info:'€5 · 穹顶圆孔Oculus<br>2000年前建筑奇迹'}
+    ], route:[[45.4414,12.3213],[41.901,12.5016],[41.906,12.4828],[41.9009,12.4833],[41.8986,12.4769]]},
+    // Day 13
+    {color:'#2E7D32', center:[41.894,12.48], zoom:14, markers:[
+      {pos:[41.8892,12.4874], title:'帕拉蒂尼山 Palatine Hill', time:'09:00-10:00 · 1h', info:'Via di San Gregorio入口(人少)<br>俯瞰古罗马广场全景'},
+      {pos:[41.8925,12.4853], title:'古罗马广场 Roman Forum', time:'10:00-10:45 · 45min', info:'提图斯凯旋门 · 神圣大道<br>从山上自然下行'},
+      {pos:[41.8902,12.4922], title:'斗兽场 Colosseum', time:'10:45-12:30 · 1.5h', info:'€24含竞技场地面层<br>走到角斗场中央!'},
+      {pos:[41.8992,12.4731], title:'纳沃纳广场 Piazza Navona', time:'15:00-15:45 · 45min', info:'贝尔尼尼四河喷泉<br>罗马最美巴洛克广场'},
+      {pos:[41.8893,12.47], title:'Trastevere 特拉斯提弗列', time:'16:00-18:30 · 2.5h', info:'鹅卵石小巷 · 常春藤外墙<br>Da Enzo/Tonnarello晚餐'}
+    ], route:[[41.8892,12.4874],[41.8925,12.4853],[41.8902,12.4922],[41.8992,12.4731],[41.8893,12.47]]},
+    // Day 14
+    {color:'#2E7D32', center:[41.87,12.4], zoom:11, markers:[
+      {pos:[41.901,12.5016], title:'Termini 行李寄存', time:'07:00', info:'退房 · 寄存柜€6-12/件<br>轻装出发'},
+      {pos:[41.9065,12.4536], title:'梵蒂冈博物馆 + 西斯廷', time:'08:00-11:00 · 3h', info:'€25 · 拉斐尔画室《雅典学院》<br>西斯廷天顶画《创世纪》<br>暗门直通圣彼得!'},
+      {pos:[41.9022,12.4539], title:'圣彼得大教堂 St. Peter\'s', time:'11:00-12:30 · 1.5h', info:'免费 · 《圣殇》Pieta<br>贝尔尼尼青铜华盖'},
+      {pos:[41.8003,12.2389], title:'FCO 菲乌米奇诺机场', time:'16:00 到达 · 20:30 起飞', info:'Leonardo Express €14 · 32min<br>预留时间退税+免税店'}
+    ], route:[[41.901,12.5016],[41.9065,12.4536],[41.9022,12.4539],[41.901,12.5016],[41.8003,12.2389]]}
+  ];
+
+  // ===== ITINERARY LOOP DATA =====
+  var loopData = [
+    {day:1, date:'3.31', label:'抵达', city:'巴黎', color:'#2B5797', country:'fr'},
+    {transport:'专车接机', duration:'45min', color:'#2B5797'},
+    {day:2, date:'4.01', label:'巴黎经典', city:'巴黎', color:'#2B5797', country:'fr'},
+    {day:3, date:'4.02', label:'凡尔赛', city:'巴黎', color:'#2B5797', country:'fr'},
+    {day:4, date:'4.03', label:'→科隆', city:'巴黎→科隆', color:'#5C3D99', country:'transit',
+     transport:'Eurostar', departure:'13:47', arrival:'17:14', duration:'3.5h'},
+    {day:5, date:'4.04', label:'→慕尼黑', city:'科隆→慕尼黑', color:'#D4A017', country:'de',
+     transport:'ICE高铁', departure:'07:30', arrival:'12:00', duration:'4.5h'},
+    {day:6, date:'4.05', label:'国王湖', city:'慕尼黑(自驾)', color:'#D4A017', country:'de',
+     transport:'自驾', duration:'1.5h单程'},
+    {day:7, date:'4.06', label:'天鹅堡', city:'慕尼黑(自驾)', color:'#D4A017', country:'de',
+     transport:'自驾', duration:'2h单程'},
+    {day:8, date:'4.07', label:'→瑞士', city:'慕尼黑→格林德瓦', color:'#C62828', country:'ch',
+     transport:'EC+换乘', departure:'09:30', arrival:'17:00', duration:'6-7h'},
+    {day:9, date:'4.08', label:'少女峰', city:'格林德瓦', color:'#C62828', country:'ch'},
+    {day:10, date:'4.09', label:'→威尼斯', city:'格林德瓦→威尼斯', color:'#2E7D32', country:'it',
+     transport:'跨境列车', departure:'08:00', arrival:'16:00', duration:'7-8h'},
+    {day:11, date:'4.10', label:'威尼斯', city:'威尼斯', color:'#2E7D32', country:'it'},
+    {day:12, date:'4.11', label:'→罗马', city:'威尼斯→罗马', color:'#2E7D32', country:'it',
+     transport:'Trenitalia', departure:'09:00', arrival:'12:30', duration:'3.5h'},
+    {day:13, date:'4.12', label:'罗马古迹', city:'罗马', color:'#2E7D32', country:'it'},
+    {day:14, date:'4.13', label:'回国', city:'罗马→FCO', color:'#2E7D32', country:'it',
+     transport:'Leonardo Exp', departure:'15:30', arrival:'16:02', duration:'32min'}
+  ];
+
+  // ===== BUILD LOOP TIMELINE =====
+  var loopTrack = document.getElementById('loop-track');
+  loopData.forEach(function(item, i) {
+    if (item.day) {
+      var node = document.createElement('div');
+      node.className = 'loop-node';
+      node.setAttribute('data-day', item.day - 1);
+      node.innerHTML = '<div class="loop-dot" style="background:'+item.color+'">D'+item.day+'</div>'
+        + '<div class="loop-label">'+item.label+'</div>'
+        + '<div class="loop-city">'+item.date+'</div>';
+      node.addEventListener('click', function() { goToDay(parseInt(this.getAttribute('data-day'))); });
+      loopTrack.appendChild(node);
+
+      // Add transport arrow after this node if it has transport info, or if next item is a day with transport
+      if (item.transport && i < loopData.length - 1) {
+        var arrow = document.createElement('div');
+        arrow.className = 'loop-arrow';
+        var tc = item.color === '#5C3D99' ? '#5C3D99' : '#999';
+        arrow.innerHTML = '<div class="loop-arrow-line" style="background:'+tc+';"></div>'
+          + '<div class="loop-arrow-info">'+item.transport+'<br>'+item.duration+'</div>';
+        loopTrack.appendChild(arrow);
+      } else if (i < loopData.length - 1 && loopData[i+1].day) {
+        // Same city, just a thin connector
+        var conn = document.createElement('div');
+        conn.className = 'loop-arrow';
+        conn.style.minWidth = '30px';
+        conn.innerHTML = '<div class="loop-arrow-line" style="background:#ddd;"></div>';
+        loopTrack.appendChild(conn);
+      }
+    }
+  });
+
+  // ===== DAY TABS DATA =====
+  var dayTabsData = [
+    {label:'Day 1', sub:'3.31', color:'#2B5797', title:'抵达巴黎'},
+    {label:'Day 2', sub:'4.01', color:'#2B5797', title:'巴黎经典'},
+    {label:'Day 3', sub:'4.02', color:'#2B5797', title:'凡尔赛'},
+    {label:'Day 4', sub:'4.03', color:'#5C3D99', title:'→科隆'},
+    {label:'Day 5', sub:'4.04', color:'#D4A017', title:'→慕尼黑'},
+    {label:'Day 6', sub:'4.05', color:'#D4A017', title:'国王湖'},
+    {label:'Day 7', sub:'4.06', color:'#D4A017', title:'天鹅堡'},
+    {label:'Day 8', sub:'4.07', color:'#C62828', title:'→瑞士'},
+    {label:'Day 9', sub:'4.08', color:'#C62828', title:'少女峰'},
+    {label:'Day 10', sub:'4.09', color:'#2E7D32', title:'→威尼斯'},
+    {label:'Day 11', sub:'4.10', color:'#2E7D32', title:'威尼斯'},
+    {label:'Day 12', sub:'4.11', color:'#2E7D32', title:'→罗马'},
+    {label:'Day 13', sub:'4.12', color:'#2E7D32', title:'罗马古迹'},
+    {label:'Day 14', sub:'4.13', color:'#2E7D32', title:'回国'}
+  ];
+
+  // ===== BUILD DAY TABS =====
+  var dayTabsEl = document.getElementById('day-tabs');
+  dayTabsData.forEach(function(t, i) {
+    var tab = document.createElement('div');
+    tab.className = 'day-tab';
+    tab.setAttribute('data-day', i);
+    tab.innerHTML = t.label + '<span class="tab-date">' + t.sub + '</span>';
+    tab.addEventListener('click', function() { goToDay(parseInt(this.getAttribute('data-day'))); });
+    dayTabsEl.appendChild(tab);
+  });
+
+  // ===== DAY CARDS PAGINATION =====
+  var allCards = document.querySelectorAll('#day-cards-container .day-card');
+  var currentDay = 0;
+  var mapInstances = {};
+
+  function goToDay(idx) {
+    if (idx < 0 || idx >= allCards.length) return;
+    currentDay = idx;
+
+    // Update cards visibility
+    allCards.forEach(function(c, i) {
+      c.classList.toggle('active-day', i === idx);
+    });
+
+    // Update tabs
+    document.querySelectorAll('.day-tab').forEach(function(tab, i) {
+      var isActive = i === idx;
+      tab.classList.toggle('active', isActive);
+      tab.style.background = isActive ? dayTabsData[i].color : '';
+      tab.style.color = isActive ? '#fff' : '';
+    });
+
+    // Scroll tab into view
+    var activeTab = dayTabsEl.children[idx];
+    if (activeTab) {
+      activeTab.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    }
+
+    // Update loop timeline
+    document.querySelectorAll('.loop-node').forEach(function(n) {
+      n.classList.toggle('active', parseInt(n.getAttribute('data-day')) === idx);
+    });
+
+    // Scroll loop node into view
+    var activeNode = document.querySelector('.loop-node[data-day="'+idx+'"]');
+    if (activeNode) {
+      activeNode.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    }
+
+    // Update nav buttons
+    updateNavButtons();
+
+    // Build time navigation for this day
+    buildTimeNav(idx);
+
+    // Initialize map if toggle is open
+    var card = allCards[idx];
+    var mapWrap = card.querySelector('.day-map-wrap');
+    if (mapWrap && mapWrap.classList.contains('open') && !mapInstances[idx]) {
+      setTimeout(function() { initDayMap(idx); }, 100);
+    }
+
+    // Scroll to pagination
+    document.getElementById('day-pagination').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function updateNavButtons() {
+    var navContainer = document.querySelector('.day-nav-buttons');
+    if (!navContainer) {
+      // Create nav buttons in the first active card
+      allCards.forEach(function(card) {
+        var existing = card.querySelector('.day-nav-buttons');
+        if (!existing) {
+          var nav = document.createElement('div');
+          nav.className = 'day-nav-buttons';
+          nav.innerHTML = '<button class="day-nav-btn prev" onclick="goToDay(currentDay-1)">&#9664; 上一天</button>'
+            + '<button class="day-nav-btn next" onclick="goToDay(currentDay+1)">下一天 &#9654;</button>';
+          card.appendChild(nav);
+        }
+      });
+    }
+    // Update all nav button states
+    allCards.forEach(function(card, idx) {
+      var btns = card.querySelectorAll('.day-nav-btn');
+      if (btns.length >= 2) {
+        btns[0].disabled = (currentDay === 0);
+        btns[1].disabled = (currentDay === allCards.length - 1);
+        btns[0].onclick = function() { goToDay(currentDay - 1); };
+        btns[1].onclick = function() { goToDay(currentDay + 1); };
+      }
+    });
+  }
+
+  // Make goToDay and currentDay global
+  window.goToDay = goToDay;
+  window.currentDay = currentDay;
+
+  // ===== TIME NAVIGATION =====
+  function buildTimeNav(dayIdx) {
+    var card = allCards[dayIdx];
+    // Remove existing time nav
+    var existing = card.querySelector('.time-nav');
+    if (existing) existing.remove();
+
+    var timeBlocks = card.querySelectorAll('.time-block');
+    if (timeBlocks.length < 2) return;
+
+    var nav = document.createElement('div');
+    nav.className = 'time-nav';
+
+    timeBlocks.forEach(function(block, i) {
+      var timeVal = block.querySelector('.time-val');
+      var h3 = block.querySelector('h3');
+      if (!timeVal || !h3) return;
+
+      var pill = document.createElement('div');
+      pill.className = 'time-pill';
+      block.setAttribute('data-time-idx', i);
+
+      // Determine type
+      var h3Text = h3.textContent || '';
+      if (h3Text.indexOf('交通') !== -1 || h3Text.indexOf('前往') !== -1 || h3Text.indexOf('火车') !== -1 || h3Text.indexOf('出发') !== -1 || h3Text.indexOf('机场') !== -1 || h3Text.indexOf('提车') !== -1) {
+        pill.classList.add('pill-transport');
+        pill.innerHTML = '<span class="pill-icon">&#128652;</span> ';
+      } else if (h3Text.indexOf('餐') !== -1 || h3Text.indexOf('午餐') !== -1 || h3Text.indexOf('晚餐') !== -1 || h3Text.indexOf('简餐') !== -1 || h3Text.indexOf('啤酒') !== -1) {
+        pill.classList.add('pill-food');
+        pill.innerHTML = '<span class="pill-icon">&#127860;</span> ';
+      } else {
+        pill.innerHTML = '<span class="pill-icon">&#128205;</span> ';
+      }
+
+      // Extract short name from h3
+      var shortName = h3.childNodes[0] ? h3.childNodes[0].textContent.trim() : h3Text;
+      if (shortName.length > 8) shortName = shortName.substring(0, 8) + '..';
+      pill.innerHTML += timeVal.textContent + ' ' + shortName;
+
+      pill.addEventListener('click', function() {
+        // Scroll to this time block
+        block.scrollIntoView({behavior:'smooth', block:'center'});
+        // Highlight
+        nav.querySelectorAll('.time-pill').forEach(function(p) { p.classList.remove('active'); });
+        pill.classList.add('active');
+        // Flash effect
+        block.style.background = '#fffde7';
+        setTimeout(function() { block.style.background = ''; }, 1500);
+      });
+
+      nav.appendChild(pill);
+    });
+
+    // Insert after day-header
+    var header = card.querySelector('.day-header');
+    header.parentNode.insertBefore(nav, header.nextSibling);
+  }
+
+  // ===== INJECT DAY MAP TOGGLE + MAP INTO EACH DAY CARD =====
+  allCards.forEach(function(card, idx) {
+    if (idx >= days.length) return;
+    var header = card.querySelector('.day-header');
+
+    // Add toggle button
+    var btn = document.createElement('button');
+    btn.className = 'map-toggle';
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Map';
+    header.appendChild(btn);
+
+    // Add map container
+    var wrap = document.createElement('div');
+    wrap.className = 'day-map-wrap';
+    wrap.id = 'day-map-wrap-' + idx;
+    var mapDiv = document.createElement('div');
+    mapDiv.className = 'day-map';
+    mapDiv.id = 'day-map-' + idx;
+    wrap.appendChild(mapDiv);
+    card.querySelector('.timeline').prepend(wrap);
+
+    // Toggle
+    btn.addEventListener('click', function() {
+      var isOpen = wrap.classList.toggle('open');
+      if (isOpen && !mapInstances[idx]) {
+        setTimeout(function() { initDayMap(idx); }, 100);
+      } else if (isOpen && mapInstances[idx]) {
+        mapInstances[idx].invalidateSize();
+      }
+    });
+  });
+
+  function initDayMap(idx) {
+    var d = days[idx];
+    var map = L.map('day-map-' + idx, {scrollWheelZoom: false}).setView(d.center, d.zoom);
+    L.tileLayer(tileUrl, {attribution: tileAttr, maxZoom: 18}).addTo(map);
+
+    if (d.route) L.polyline(d.route, {color: d.color, weight: 3, opacity: 0.6}).addTo(map);
+    if (d.route2) L.polyline(d.route2, {color: d.color, weight: 3, opacity: 0.6}).addTo(map);
+
+    d.markers.forEach(function(m, i) {
+      L.marker(m.pos, {icon: numIcon(i+1, d.color)}).addTo(map)
+        .bindPopup(popup(m.title, m.time, m.info));
+    });
+
+    if (d.markers.length > 1) {
+      var bounds = L.latLngBounds(d.markers.map(function(m){return m.pos;}));
+      if (bounds.getNorthEast().distanceTo(bounds.getSouthWest()) > 5000) {
+        map.fitBounds(bounds, {padding: [30,30], maxZoom: d.zoom});
+      }
+    }
+
+    mapInstances[idx] = map;
+  }
+
+  // ===== KEYBOARD NAVIGATION =====
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') goToDay(currentDay - 1);
+    if (e.key === 'ArrowRight') goToDay(currentDay + 1);
+  });
+
+  // ===== INITIALIZE: Show Day 1 =====
+  goToDay(0);
+
+  // ===== ATTRACTION IMAGES =====
+  var spotImages = {
+    '卢浮宫': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Louvre_Museum_Wikimedia_Commons.jpg/500px-Louvre_Museum_Wikimedia_Commons.jpg', cap:'Louvre Museum &copy; Wikimedia Commons'},
+    '圣母院': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Notre-Dame_de_Paris%2C_4_October_2017.jpg/500px-Notre-Dame_de_Paris%2C_4_October_2017.jpg', cap:'Notre-Dame de Paris &copy; Wikimedia Commons'},
+    '圣礼拜堂': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Sainte_Chapelle_-_Upper_level_1.jpg/500px-Sainte_Chapelle_-_Upper_level_1.jpg', cap:'Sainte-Chapelle &copy; Wikimedia Commons'},
+    '埃菲尔铁塔': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/500px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg', cap:'Tour Eiffel &copy; Wikimedia Commons'},
+    '亚历山大三世桥': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Pont_Alexandre_III_depuis_pont_de_la_Concorde_Paris.jpg/500px-Pont_Alexandre_III_depuis_pont_de_la_Concorde_Paris.jpg', cap:'Pont Alexandre III &copy; Wikimedia Commons'},
+    '凡尔赛宫': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Versailles-Chateau-Jardins02.jpg/500px-Versailles-Chateau-Jardins02.jpg', cap:'Palace of Versailles &copy; Wikimedia Commons'},
+    '蒙马特': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Le_sacre_coeur.jpg/500px-Le_sacre_coeur.jpg', cap:'Sacr&eacute;-C&oelig;ur &copy; Wikimedia Commons'},
+    '凯旋门': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Arc_de_Triomphe%2C_Paris_21_October_2010.jpg/500px-Arc_de_Triomphe%2C_Paris_21_October_2010.jpg', cap:'Arc de Triomphe &copy; Wikimedia Commons'},
+    '科隆大教堂': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/K%C3%B6lner_Dom_-_Westfassade_2022_ohne_Ger%C3%BCst-0968_b.jpg/500px-K%C3%B6lner_Dom_-_Westfassade_2022_ohne_Ger%C3%BCst-0968_b.jpg', cap:'K&ouml;lner Dom &copy; Wikimedia Commons'},
+    '安联球场': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Allianz_Arena_2008-02-09.jpg/500px-Allianz_Arena_2008-02-09.jpg', cap:'Allianz Arena &copy; Wikimedia Commons'},
+    '玛利亚广场': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Rathaus_and_Marienplatz_from_Peterskirche_-_August_2006.jpg/500px-Rathaus_and_Marienplatz_from_Peterskirche_-_August_2006.jpg', cap:'Marienplatz &copy; Wikimedia Commons'},
+    '皇家啤酒馆': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hofbrauhaus.JPG/500px-Hofbrauhaus.JPG', cap:'Hofbr&auml;uhaus &copy; Wikimedia Commons'},
+    '拉姆绍': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ramsau_Kirche_mit_Wagendrischelhorn_2.jpg/500px-Ramsau_Kirche_mit_Wagendrischelhorn_2.jpg', cap:'Ramsau bei Berchtesgaden &copy; Wikimedia Commons'},
+    '国王湖': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/K%C3%B6nigsee_in_Bayern.jpg/500px-K%C3%B6nigsee_in_Bayern.jpg', cap:'K&ouml;nigssee &copy; Wikimedia Commons'},
+    '新天鹅堡': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Schloss_Neuschwanstein_2013.jpg/500px-Schloss_Neuschwanstein_2013.jpg', cap:'Neuschwanstein Castle &copy; Wikimedia Commons'},
+    '少女峰': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Sphinx_et_Jungfrau_-_img_06980.jpg/500px-Sphinx_et_Jungfrau_-_img_06980.jpg', cap:'Jungfraujoch &copy; Wikimedia Commons'},
+    'Kleine Scheidegg': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Eiger%2C_M%C3%B6nch_and_Jungfrau.jpg/500px-Eiger%2C_M%C3%B6nch_and_Jungfrau.jpg', cap:'Eiger, M&ouml;nch &amp; Jungfrau &copy; Wikimedia Commons'},
+    '格林德瓦': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Grindelwald_View_02.jpg/500px-Grindelwald_View_02.jpg', cap:'Grindelwald &copy; Wikimedia Commons'},
+    '圣马可广场': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Piazza_San_Marco_%28Venice%29_at_night-msu-2021-6449-.jpg/500px-Piazza_San_Marco_%28Venice%29_at_night-msu-2021-6449-.jpg', cap:'Piazza San Marco &copy; Wikimedia Commons'},
+    '总督府': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/%28Venice%29_Doge%27s_Palace_and_campanile_of_St._Mark%27s_Basilica_facing_the_sea.jpg/500px-%28Venice%29_Doge%27s_Palace_and_campanile_of_St._Mark%27s_Basilica_facing_the_sea.jpg', cap:'Doge\'s Palace &copy; Wikimedia Commons'},
+    '里亚托桥': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Rialto_2025_4.jpg/500px-Rialto_2025_4.jpg', cap:'Rialto Bridge &copy; Wikimedia Commons'},
+    '彩色岛': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Burano_Venice_17.jpg/500px-Burano_Venice_17.jpg', cap:'Burano &copy; Wikimedia Commons'},
+    '西班牙广场': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Piazza_di_Spagna_%28Rome%29_0004.jpg/500px-Piazza_di_Spagna_%28Rome%29_0004.jpg', cap:'Spanish Steps &copy; Wikimedia Commons'},
+    '特雷维喷泉': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Trevi_Fountain_-_Roma.jpg/500px-Trevi_Fountain_-_Roma.jpg', cap:'Trevi Fountain &copy; Wikimedia Commons'},
+    '万神殿': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Pantheon_Rom_1_cropped.jpg/500px-Pantheon_Rom_1_cropped.jpg', cap:'Pantheon &copy; Wikimedia Commons'},
+    '斗兽场': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/500px-Colosseo_2020.jpg', cap:'Colosseum &copy; Wikimedia Commons'},
+    '古罗马广场': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Foro_Romano_Musei_Capitolini_Roma.jpg/500px-Foro_Romano_Musei_Capitolini_Roma.jpg', cap:'Roman Forum &copy; Wikimedia Commons'},
+    '纳沃纳广场': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Piazza_Navona_%28Rome%29_at_night.jpg/500px-Piazza_Navona_%28Rome%29_at_night.jpg', cap:'Piazza Navona &copy; Wikimedia Commons'},
+    'Trastevere': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Santa_Maria_in_Trastevere_fountain.jpg/500px-Santa_Maria_in_Trastevere_fountain.jpg', cap:'Trastevere &copy; Wikimedia Commons'},
+    '梵蒂冈博物馆': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Sistina-interno.jpg/500px-Sistina-interno.jpg', cap:'Sistine Chapel &copy; Wikimedia Commons'},
+    '圣彼得大教堂': {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg/500px-Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg', cap:'St. Peter\'s Basilica &copy; Wikimedia Commons'}
+  };
+
+  // Inject images into matching content blocks
+  document.querySelectorAll('.content-col').forEach(function(col) {
+    var h3 = col.querySelector('h3');
+    if (!h3) return;
+    var text = h3.textContent;
+    for (var key in spotImages) {
+      if (text.indexOf(key) !== -1) {
+        var si = spotImages[key];
+        var img = document.createElement('img');
+        img.className = 'spot-img';
+        img.src = si.url;
+        img.alt = key;
+        img.loading = 'lazy';
+        img.onerror = function() { this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='none'; };
+        var cap = document.createElement('p');
+        cap.className = 'spot-img-caption';
+        cap.innerHTML = si.cap;
+        // Insert after highlights or after the first p, or at end
+        var target = col.querySelector('.highlights') || col.querySelector('.tip-box') || col.querySelector('.warn-box');
+        if (target) {
+          target.parentNode.insertBefore(cap, target);
+          target.parentNode.insertBefore(img, cap);
+        } else {
+          col.appendChild(img);
+          col.appendChild(cap);
+        }
+        break; // Only one image per block
+      }
+    }
+  });
+
+});
+</script>
+</body>
+</html>
