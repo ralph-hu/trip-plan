@@ -460,6 +460,7 @@
     <span class="legend-item"><span class="legend-dot" style="background:#C62828;"></span>瑞士</span>
     <span class="legend-item"><span class="legend-dot" style="background:#2E7D32;"></span>意大利</span>
     <span class="legend-item"><span class="legend-dot" style="background:#5C3D99;"></span>跨国交通</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#FF6F00;"></span>🔄换乘游</span>
   </div>
   <div id="overview-map"></div>
 </div>
@@ -1018,14 +1019,16 @@
     <div class="content-col">
       <h3>🆕 苏黎世漫步 <span class="tag tag-spot">换乘游</span><span class="tag tag-photo">拍照</span></h3>
       <p>行李寄存火车站（CHF 9/件/天），轻装出站。<b>停留3小时，深度逛老城</b></p>
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Zurich_Panorama.jpg/1280px-Zurich_Panorama.jpg" alt="苏黎世利马特河全景">
+      <p class="spot-img-caption">苏黎世利马特河与老城全景 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>步行路线（2km，全平路）：</strong><br>
         - 出站 → <b>班霍夫大街</b> Bahnhofstrasse（全球最贵购物街之一）<br>
         - 步行10min → <b>利马特河</b> Limmat（拍老城+河流+远处雪山）<br>
         - 过桥 → <b>Lindenhof 观景台</b>（俯瞰全城，免费）<br>
-        - 沿河 → <b>苏黎世大教堂</b> Grossmünster（外观拍照）<br>
+        - 沿河 → <b>苏黎世大教堂</b> Grossmünster（双塔地标，外观拍照）<br>
         - <b>Niederdorf 小巷</b>（老城最有味道的区域，小店+咖啡馆）<br>
-        - 原路回火车站
+        - 原路回火车站取行李
       </div>
       <div class="food-box"><strong>午餐：</strong>河边找餐厅慢慢吃午餐，比瑞士山区便宜。推荐试瑞士 Rösti（土豆饼）或 Zürcher Geschnetzeltes（苏黎世小牛肉）</div>
     </div>
@@ -1042,6 +1045,8 @@
     <div class="content-col">
       <h3>🆕 因特拉肯打卡 <span class="tag tag-spot">换乘游</span><span class="tag tag-photo">拍照</span></h3>
       <p>出站右转步行5分钟到 Höheweg 大道。<b>日落前黄金光线（~19:30日落），拍三山最美的时段！</b></p>
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Interlaken_Höheweg.jpg/1280px-Interlaken_Höheweg.jpg" alt="因特拉肯Höheweg三山全景">
+      <p class="spot-img-caption">因特拉肯 Höheweg — 远眺少女峰·僧侣峰·艾格峰 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>经典机位：</strong>Höheweg 草坪正对少女峰+僧侣峰+艾格峰三山全景，全瑞士最著名的明信片角度之一。明天就要上少女峰了，今天先远观，很有仪式感！
       </div>
@@ -1698,17 +1703,23 @@ document.addEventListener('DOMContentLoaded', function() {
     {name:'巴黎', pos:[48.8566,2.3522], dates:'Day 1-4 · 3/31-4/3', color:'#2B5797', info:'3晚 | 卢浮宫·铁塔·凡尔赛·圣母院'},
     {name:'科隆', pos:[50.9375,6.9603], dates:'Day 4-5 · 4/3-4/4', color:'#D4A017', info:'1晚 | 大教堂·霍亨索伦桥'},
     {name:'慕尼黑', pos:[48.1351,11.5820], dates:'Day 5-8 · 4/4-4/7', color:'#D4A017', info:'3晚 | 安联球场·国王湖·新天鹅堡'},
+    {name:'🔄苏黎世', pos:[47.3769,8.5417], dates:'Day 8 · 4/7 换乘游', color:'#FF6F00', info:'⏱️3h | 班霍夫大街·利马特河·老城'},
+    {name:'🔄因特拉肯', pos:[46.6907,7.8692], dates:'Day 8 · 4/7 换乘游', color:'#FF6F00', info:'⏱️1.5h | 三山全景·超市补给'},
     {name:'格林德瓦', pos:[46.6240,8.0414], dates:'Day 8-10 · 4/7-4/9', color:'#C62828', info:'2晚 | 少女峰·阿尔卑斯'},
+    {name:'🔄米兰', pos:[45.4861,9.2042], dates:'Day 10 · 4/9 换乘游', color:'#FF6F00', info:'⏱️2.5h | Duomo大教堂·长廊'},
     {name:'威尼斯', pos:[45.4408,12.3155], dates:'Day 10-12 · 4/9-4/11', color:'#2E7D32', info:'2晚 | 圣马可·贡多拉·彩色岛'},
     {name:'罗马', pos:[41.9028,12.4964], dates:'Day 12-14 · 4/11-4/13', color:'#2E7D32', info:'2晚 | 斗兽场·梵蒂冈·Trastevere'}
   ];
 
   var segments = [
     {from:0, to:1, label:'Eurostar 高铁 · 3.5h'},
-    {from:1, to:2, label:'ICE 高铁 · 4.5h'},
-    {from:2, to:3, label:'EC列车 换乘2次 · 6-7h'},
-    {from:3, to:4, label:'跨境列车 经米兰 · 7-8h'},
-    {from:4, to:5, label:'Trenitalia 高铁 · 3.5h'}
+    {from:1, to:2, label:'ICE 527 高铁 · 4.5h ✅已订'},
+    {from:2, to:3, label:'EC列车 · 3.5h'},
+    {from:3, to:4, label:'IC列车 · 2h（图恩湖段最美！）'},
+    {from:4, to:5, label:'齿轨列车 · 35min'},
+    {from:5, to:6, label:'EC+跨境 经Simplon · 5-6h'},
+    {from:6, to:7, label:'Frecciarossa 9741 · 2.5h ✅已订'},
+    {from:7, to:8, label:'Frecciarossa · 3.5h（待订）'}
   ];
 
   segments.forEach(function(s) {
@@ -1774,10 +1785,10 @@ document.addEventListener('DOMContentLoaded', function() {
     ], route:[[48.1351,11.582],[47.5713,10.7014],[47.5563,10.751],[47.5576,10.7498],[48.1351,11.582]]},
     // Day 8
     {color:'#C62828', center:[47.4,9.8], zoom:7, markers:[
-      {pos:[48.1403,11.56], title:'慕尼黑火车站', time:'08:00 还车 · 09:30 出发', info:'预留1h还车(检车加油手续)<br>Super/E5 = 95号汽油'},
-      {pos:[47.3769,8.5417], title:'苏黎世 Zürich HB', time:'中转', info:'EC列车 3.5-4h到达<br>沿途湖光山色'},
-      {pos:[46.6907,7.8692], title:'因特拉肯 Interlaken Ost', time:'中转', info:'换乘齿轨列车<br>开始进入阿尔卑斯'},
-      {pos:[46.624,8.0414], title:'格林德瓦 Grindelwald', time:'17:00 到达', info:'入住木屋 · Coop超市买晚餐<br>查明天jungfrau.ch天气!'}
+      {pos:[48.1403,11.56], title:'慕尼黑火车站', time:'08:00 还车 · 08:52 出发', info:'预留1h还车(检车加油手续)<br>EC列车 → 苏黎世 3.5h'},
+      {pos:[47.3769,8.5417], title:'🔄 苏黎世 换乘游 3h', time:'12:28-15:30', info:'班霍夫大街·利马特河·Lindenhof观景台<br>苏黎世大教堂·Niederdorf老城小巷<br>河边午餐（Rösti/苏黎世小牛肉）'},
+      {pos:[46.6907,7.8692], title:'🔄 因特拉肯 换乘游 1.5h', time:'17:26-19:00', info:'Höheweg草坪拍三山全景（明信片机位）<br>日落前黄金光线最美<br>Coop超市补给明天上山干粮'},
+      {pos:[46.624,8.0414], title:'格林德瓦 Grindelwald', time:'20:00 入住', info:'Burglauenen木屋 · 速食晚餐<br>⚠️查jungfrau.ch明天天气!'}
     ], route:[[48.1403,11.56],[47.3769,8.5417],[46.6907,7.8692],[46.624,8.0414]]},
     // Day 9
     {color:'#C62828', center:[46.59,8.02], zoom:13, markers:[
@@ -1789,7 +1800,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Day 10
     {color:'#2E7D32', center:[46.0,10.2], zoom:6, markers:[
       {pos:[46.624,8.0414], title:'格林德瓦出发', time:'08:00', info:'跨境列车 经因特拉肯'},
-      {pos:[45.4861,9.2042], title:'米兰 Milano Centrale', time:'中转', info:'不出站直接换乘<br>意铁段Super Economy €9.90起'},
+      {pos:[45.4861,9.2042], title:'🔄 米兰 换乘游 2.5h', time:'13:17-15:45', info:'M3地铁3站到Duomo大教堂广场<br>埃马努埃莱二世长廊拍照<br>Frecciarossa 9741 15:45发 ✅已订'},
       {pos:[45.4414,12.3213], title:'威尼斯 Santa Lucia', time:'16:00 到达', info:'买24h水上巴士通票€21/人'},
       {pos:[45.4343,12.3388], title:'贡多拉 日落巡游', time:'17:30-18:00', info:'€80/船 3人 · 约30分钟<br>San Giorgio教堂日落剪影'}
     ], route:[[46.624,8.0414],[45.4861,9.2042],[45.4414,12.3213],[45.4343,12.3388]]},
