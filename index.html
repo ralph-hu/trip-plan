@@ -124,10 +124,7 @@
   .map-toggle:hover { background: rgba(255,255,255,0.4); }
   .map-toggle svg { width: 14px; height: 14px; fill: currentColor; }
   .city-label { font-size: 11px; font-weight: 700; white-space: nowrap; }
-  .leaflet-popup-content { font-family: -apple-system, "PingFang SC", sans-serif; font-size: 13px; line-height: 1.5; }
-  .leaflet-popup-content b { color: #1a1a2e; }
-  .leaflet-popup-content .pop-time { color: #2B5797; font-weight: 600; font-size: 12px; }
-  .leaflet-popup-content .pop-info { color: #555; font-size: 12px; }
+  /* Leaflet popup styles removed */
 
   .map-legend { display: flex; flex-wrap: wrap; gap: 12px; padding: 10px 22px 14px; font-size: 0.8em; }
   .legend-item { display: flex; align-items: center; gap: 5px; }
@@ -191,6 +188,41 @@
   .section-toggle.open .toggle-arrow { transform: rotate(90deg); }
   .collapsible-section { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
   .collapsible-section.open { max-height: 5000px; }
+
+  /* ===== Nav Button ===== */
+  .nav-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #4285f4;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85em;
+    min-height: 44px;
+    line-height: 28px;
+    margin: 4px 0;
+  }
+  .nav-btn:active { background: #3367d6; }
+
+  /* ===== Emergency Section ===== */
+  .emergency-section { background: #fff; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+  .emergency-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 14px 22px; background: #fff; border-radius: 14px; font-weight: 700; color: #C62828; font-size: 1em; border: none; width: 100%; text-align: left; transition: background 0.2s; }
+  .emergency-toggle:hover { background: #FFF5F5; }
+  .emergency-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 22px; }
+  .emergency-body.open { max-height: 3000px; padding: 0 22px 18px; }
+  .emergency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .emergency-card { background: #FFF5F5; border-radius: 10px; padding: 12px 14px; border: 1px solid #FFCDD2; }
+  .emergency-card h4 { font-size: 0.9em; color: #C62828; margin-bottom: 8px; }
+  .emergency-card a { display: block; color: #1565C0; text-decoration: none; font-size: 0.88em; padding: 3px 0; font-weight: 600; }
+  .emergency-card a:hover { text-decoration: underline; }
+  .emergency-card .phone-label { color: #555; font-weight: 400; font-size: 0.82em; }
+
+  /* ===== Location Card (replacing maps) ===== */
+  .location-card { background: #f8f9ff; border-radius: 12px; padding: 16px 22px; margin: 12px 22px; border: 1px solid #e0e4f0; }
+  .location-card h3 { font-size: 1em; color: #1a1a2e; margin-bottom: 10px; }
+  .location-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+  .location-card-item { font-size: 0.82em; color: #555; padding: 4px 0; }
+  .location-card-item b { color: #2B5797; }
 
   /* ===== Mobile Optimization ===== */
   @media (max-width: 600px) {
@@ -292,8 +324,104 @@
     body { padding-bottom: env(safe-area-inset-bottom); }
     .day-pagination { padding-top: env(safe-area-inset-top); }
   }
+
+  /* ===== Dark Mode ===== */
+  @media (prefers-color-scheme: dark) {
+    body { background: #1a1a2e; color: #e0e0e0; }
+    .container { color: #e0e0e0; }
+    h1 { color: #e8e8f0; }
+    .subtitle { color: #aaa; }
+    .version-note { background: #2a2000; color: #ffb74d; }
+
+    .day-card { background: #252540; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .time-val { color: #64B5F6; }
+    .duration { color: #888; }
+    .content-col h3 { color: #e0e0f0; }
+    .content-col p { color: #bbb; }
+
+    .highlights { background: #1e2040; border-left-color: #5c8bd6; }
+    .highlights strong { color: #82b1ff; }
+    .tip-box { background: #2a2400; border-left-color: #ffc107; color: #e0d8c0; }
+    .warn-box { background: #2a1010; border-left-color: #ef5350; color: #f0c8c8; }
+    .food-box { background: #2a1c00; border-left-color: #ff9800; color: #e0d0b0; }
+
+    .decision { background: #201830; border-color: #9C27B0; }
+    .decision h2 { color: #CE93D8; }
+    .option { background: #252540; border-color: #4a3870; }
+    .option h4 { color: #b388ff; }
+
+    .accom { background: #252540; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .accom h2 { color: #66BB6A; }
+    .accom-card { background: #1e2030; border-color: #333; }
+    .accom-name { color: #e0e0f0; }
+    .accom-meta { color: #bbb; }
+    .accom-total { background: #1a2a1a; }
+    .accom-total strong { color: #81C784; }
+
+    .summary { background: #252540; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .summary h2 { color: #e0e0f0; }
+    .summary th { color: #82b1ff; border-bottom-color: #5c8bd6; }
+    .summary td { color: #ccc; border-bottom-color: #333; }
+
+    .usage-guide { background: #252540; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .usage-guide h2 { color: #e0e0f0; }
+    .usage-step { background: #1e2040; }
+    .usage-step h4 { color: #e0e0f0; }
+    .usage-step p { color: #aaa; }
+
+    .weather-section { background: #252540; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .weather-section h2 { color: #e0e0f0; }
+    .weather-table th { color: #82b1ff; border-bottom-color: #5c8bd6; }
+    .weather-table td { color: #ccc; border-bottom-color: #333; }
+    .weather-table tr:hover { background: #1e2040; }
+    .weather-alert { background: #2a2400; color: #e0d8c0; }
+    .packing-card { background: #1e2040; }
+    .packing-card h4 { color: #e0e0f0; }
+    .packing-card ul { color: #bbb; }
+
+    .map-section { background: #252540; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .map-section h2 { color: #e0e0f0; }
+
+    .loop-section { background: #252540; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .loop-section h2 { color: #e0e0f0; }
+    .loop-label { color: #ccc; }
+    .loop-city { color: #888; }
+
+    .day-pagination { background: #252540; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .day-tab { color: #999; }
+    .day-tab:hover { background: #333; color: #ddd; }
+
+    .time-nav { background: #1e2040; border-bottom-color: #333; }
+    .time-pill { background: #252540; color: #ccc; border-color: #444; }
+    .time-pill:hover { background: #333; border-color: #666; }
+
+    .section-toggle { background: #252540; color: #e0e0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .section-toggle:hover { background: #2a2a44; }
+
+    .day-nav-btn { background: #252540; color: #ccc; border-color: #444; }
+    .day-nav-btn:hover { background: #333; }
+    .day-nav-btn.next { background: #2B5797; color: #fff; border-color: #2B5797; }
+
+    .location-card { background: #1e2040; border-color: #333; }
+    .location-card h3 { color: #e0e0f0; }
+    .location-card-item { color: #bbb; }
+    .location-card-item b { color: #82b1ff; }
+
+    .emergency-section { background: #252540; }
+    .emergency-toggle { background: #252540; color: #ef9a9a; }
+    .emergency-toggle:hover { background: #2a1a1a; }
+    .emergency-card { background: #2a1a1a; border-color: #4a2020; }
+    .emergency-card h4 { color: #ef9a9a; }
+    .emergency-card a { color: #82b1ff; }
+    .emergency-card .phone-label { color: #999; }
+
+    .nav-btn { background: #3367d6; }
+    .nav-btn:active { background: #2850a8; }
+
+    a { color: #82b1ff; }
+  }
 </style>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<!-- Leaflet CSS removed - using Google Maps navigation buttons instead -->
 </head>
 <body>
 <div class="container">
@@ -332,6 +460,51 @@
       <div>
         <h4>重要提示</h4>
         <p><span style="background:#FFF8E1;padding:1px 4px;border-radius:3px;font-size:11px;">黄色框</span> = 实用建议&ensp;<span style="background:#FFEBEE;padding:1px 4px;border-radius:3px;font-size:11px;">红色框</span> = 注意事项&ensp;<span style="background:#E8F5E9;padding:1px 4px;border-radius:3px;font-size:11px;">绿色框</span> = 重点打卡。文末有每日体力评估表，帮助合理安排节奏。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== EMERGENCY PHONES ==================== -->
+<div class="emergency-section">
+  <button class="emergency-toggle" onclick="var b=this.nextElementSibling;b.classList.toggle('open');this.querySelector('.toggle-arrow').style.transform=b.classList.contains('open')?'rotate(90deg)':'';">
+    <span class="toggle-arrow" style="transition:transform 0.3s;display:inline-block;">&#9654;</span> 紧急电话号码（点击展开）
+  </button>
+  <div class="emergency-body">
+    <div class="emergency-grid">
+      <div class="emergency-card">
+        <h4>欧盟通用急救</h4>
+        <a href="tel:112">112 <span class="phone-label">— 全欧通用紧急号码</span></a>
+        <p style="font-size:0.78em;color:#888;margin-top:4px;">在法/德/瑞/意均可拨打，自动转接当地急救</p>
+      </div>
+      <div class="emergency-card">
+        <h4>法国 France</h4>
+        <a href="tel:17">17 <span class="phone-label">— 警察 Police</span></a>
+        <a href="tel:15">15 <span class="phone-label">— 急救医疗 SAMU</span></a>
+        <a href="tel:+33153758840">+33 1 5375 8840 <span class="phone-label">— 中国驻法大使馆</span></a>
+      </div>
+      <div class="emergency-card">
+        <h4>德国 Germany</h4>
+        <a href="tel:110">110 <span class="phone-label">— 警察 Polizei</span></a>
+        <a href="tel:112">112 <span class="phone-label">— 急救/消防</span></a>
+        <a href="tel:+493027588555">+49 30 27588555 <span class="phone-label">— 中国驻德大使馆</span></a>
+      </div>
+      <div class="emergency-card">
+        <h4>瑞士 Switzerland</h4>
+        <a href="tel:117">117 <span class="phone-label">— 警察 Polizei</span></a>
+        <a href="tel:144">144 <span class="phone-label">— 急救医疗 Ambulance</span></a>
+        <a href="tel:+41313527333">+41 31 3527333 <span class="phone-label">— 中国驻瑞大使馆</span></a>
+      </div>
+      <div class="emergency-card">
+        <h4>意大利 Italy</h4>
+        <a href="tel:113">113 <span class="phone-label">— 警察 Polizia</span></a>
+        <a href="tel:118">118 <span class="phone-label">— 急救医疗 Ambulanza</span></a>
+        <a href="tel:+390630534801">+39 06 30534801 <span class="phone-label">— 中国驻意大使馆</span></a>
+      </div>
+      <div class="emergency-card">
+        <h4>中国外交部全球领保热线</h4>
+        <a href="tel:+861012308">+86 10 12308 <span class="phone-label">— 24小时领事保护</span></a>
+        <a href="tel:+861065612308">+86 10 65612308 <span class="phone-label">— 备用号码</span></a>
       </div>
     </div>
   </div>
@@ -450,19 +623,32 @@
   </div>
 </div>
 
-<!-- ==================== OVERVIEW MAP ==================== -->
+<!-- ==================== OVERVIEW MAP (replaced with location card) ==================== -->
 <div class="map-section">
-  <h2>总览地图 — 4国14天路线</h2>
-  <p class="map-subtitle">点击城市标记查看详情 | 点击路线查看交通方式</p>
+  <h2>总览路线 — 4国14天</h2>
+  <p class="map-subtitle">点击城市名称可导航到该城市</p>
   <div class="map-legend">
     <span class="legend-item"><span class="legend-dot" style="background:#2B5797;"></span>法国</span>
     <span class="legend-item"><span class="legend-dot" style="background:#D4A017;"></span>德国</span>
     <span class="legend-item"><span class="legend-dot" style="background:#C62828;"></span>瑞士</span>
     <span class="legend-item"><span class="legend-dot" style="background:#2E7D32;"></span>意大利</span>
     <span class="legend-item"><span class="legend-dot" style="background:#5C3D99;"></span>跨国交通</span>
-    <span class="legend-item"><span class="legend-dot" style="background:#FF6F00;"></span>🔄换乘游</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#FF6F00;"></span>换乘游</span>
   </div>
-  <div id="overview-map"></div>
+  <div class="location-card">
+    <h3>途经城市</h3>
+    <div class="location-card-grid">
+      <div class="location-card-item"><b>巴黎</b> Day 1-4<br><a href="https://www.google.com/maps/dir/?api=1&destination=48.8566,2.3522&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到巴黎</a></div>
+      <div class="location-card-item"><b>科隆</b> Day 4-5<br><a href="https://www.google.com/maps/dir/?api=1&destination=50.9375,6.9603&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到科隆</a></div>
+      <div class="location-card-item"><b>慕尼黑</b> Day 5-8<br><a href="https://www.google.com/maps/dir/?api=1&destination=48.1351,11.5820&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到慕尼黑</a></div>
+      <div class="location-card-item"><b>苏黎世</b> Day 8 换乘<br><a href="https://www.google.com/maps/dir/?api=1&destination=47.3769,8.5417&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到苏黎世</a></div>
+      <div class="location-card-item"><b>因特拉肯</b> Day 8 换乘<br><a href="https://www.google.com/maps/dir/?api=1&destination=46.6907,7.8692&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到因特拉肯</a></div>
+      <div class="location-card-item"><b>格林德瓦</b> Day 8-10<br><a href="https://www.google.com/maps/dir/?api=1&destination=46.6240,8.0414&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到格林德瓦</a></div>
+      <div class="location-card-item"><b>米兰</b> Day 10 换乘<br><a href="https://www.google.com/maps/dir/?api=1&destination=45.4861,9.2042&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到米兰</a></div>
+      <div class="location-card-item"><b>威尼斯</b> Day 10-12<br><a href="https://www.google.com/maps/dir/?api=1&destination=45.4408,12.3155&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到威尼斯</a></div>
+      <div class="location-card-item"><b>罗马</b> Day 12-14<br><a href="https://www.google.com/maps/dir/?api=1&destination=41.9028,12.4964&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到罗马</a></div>
+    </div>
+  </div>
 </div>
 
 <!-- ==================== ITINERARY LOOP TIMELINE ==================== -->
@@ -536,7 +722,7 @@
     <div class="content-col">
       <h3>卢浮宫 Musee du Louvre <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
       <p>预约09:00最早时段。建议走<strong>卡鲁塞尔入口（Carrousel）</strong>，从地铁站地下通道直达，全程有电梯，不用室外排队</p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/6/66/Louvre_Museum_Wikimedia_Commons.jpg" alt="卢浮宫金字塔">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/6/66/Louvre_Museum_Wikimedia_Commons.jpg" alt="卢浮宫金字塔" loading="lazy" decoding="async">
       <p class="spot-img-caption">卢浮宫玻璃金字塔 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>推荐路线（2.5-3小时，含休息）：</strong><br><br>
@@ -598,7 +784,7 @@
     <div class="content-col">
       <h3>埃菲尔铁塔 Tour Eiffel <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
       <p>建议购买<strong>电梯登顶票</strong>（€36.70/人）或电梯到二层（€23.50/人）。674级台阶不适合父母</p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg" alt="埃菲尔铁塔">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg" alt="埃菲尔铁塔" loading="lazy" decoding="async">
       <p class="spot-img-caption">埃菲尔铁塔 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>各层看点：</strong><br>
@@ -650,7 +836,7 @@
     <div class="content-col">
       <h3>凡尔赛宫 Chateau de Versailles <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
       <p>预约09:00时段，走 Entrance A（Dufour Pavilion，庭院南侧）入场。中文语音导览免费App可提前下载</p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Palace_of_Versailles_Gardens_13.JPG/1280px-Palace_of_Versailles_Gardens_13.JPG" alt="凡尔赛宫花园外观">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Palace_of_Versailles_Gardens_13.JPG/1280px-Palace_of_Versailles_Gardens_13.JPG" alt="凡尔赛宫花园外观" loading="lazy" decoding="async">
       <p class="spot-img-caption">凡尔赛宫花园侧全景 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>宫殿内部路线（约2-2.5小时）：</strong><br>
@@ -952,7 +1138,7 @@
     <div class="content-col">
       <h3>马车上山 <span class="tag tag-transport">交通</span></h3>
       <p>从 Hotel Müller 出发坐马车上山（€7/人，约20分钟），下车后还需步行10分钟上坡到城堡入口</p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Neuschwanstein_Castle_Bavaria_Germany.JPG" alt="新天鹅堡经典角度">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Neuschwanstein_Castle_Bavaria_Germany.JPG" alt="新天鹅堡经典角度" loading="lazy" decoding="async">
       <p class="spot-img-caption">新天鹅堡（玛丽安桥角度）| 图源 Wikimedia Commons</p>
       <div class="tip-box">上山坐马车省力，下山坐穿梭巴士（€3.50/人，巴士站在城堡上方）。步行上山30-40分钟坡度较陡，不推荐父母</div>
     </div>
@@ -1019,7 +1205,7 @@
     <div class="content-col">
       <h3>🆕 苏黎世漫步 <span class="tag tag-spot">换乘游</span><span class="tag tag-photo">拍照</span></h3>
       <p>行李寄存火车站（CHF 9/件/天），轻装出站。<b>停留5小时，深度逛老城+午餐+湖边散步</b></p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Zurich_Panorama.jpg/1280px-Zurich_Panorama.jpg" alt="苏黎世利马特河全景">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Zurich_Panorama.jpg/1280px-Zurich_Panorama.jpg" alt="苏黎世利马特河全景" loading="lazy" decoding="async">
       <p class="spot-img-caption">苏黎世利马特河与老城全景 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>步行路线（2km，全平路）：</strong><br>
@@ -1045,7 +1231,7 @@
     <div class="content-col">
       <h3>🆕 因特拉肯打卡 <span class="tag tag-spot">换乘游</span><span class="tag tag-photo">拍照</span></h3>
       <p>出站右转步行5分钟到 Höheweg 大道。<b>日落前黄金光线（~19:30日落），拍三山最美的时段！</b></p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Interlaken_Höheweg.jpg/1280px-Interlaken_Höheweg.jpg" alt="因特拉肯Höheweg三山全景">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Interlaken_Höheweg.jpg/1280px-Interlaken_Höheweg.jpg" alt="因特拉肯Höheweg三山全景" loading="lazy" decoding="async">
       <p class="spot-img-caption">因特拉肯 Höheweg — 远眺少女峰·僧侣峰·艾格峰 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>经典机位：</strong>Höheweg 草坪正对少女峰+僧侣峰+艾格峰三山全景，全瑞士最著名的明信片角度之一。明天就要上少女峰了，今天先远观，很有仪式感！
@@ -1107,7 +1293,7 @@
     <div class="content-col">
       <h3>少女峰山顶 Jungfraujoch <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
       <p>海拔3,454m，欧洲最高火车站。建议在山顶停留 2.5-3 小时</p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/5/5d/5113_-_Jungfraujoch_-_Sphinx_Observatory.JPG" alt="少女峰斯芬克斯观景台">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/5/5d/5113_-_Jungfraujoch_-_Sphinx_Observatory.JPG" alt="少女峰斯芬克斯观景台" loading="lazy" decoding="async">
       <p class="spot-img-caption">斯芬克斯观景台（3,571m）| 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>山顶游览安排（约2.5-3小时）：</strong><br>
@@ -1216,7 +1402,7 @@
     <div class="content-col">
       <h3>清晨圣马可广场 + 大教堂 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
       <p>清晨8点的圣马可广场几乎没人，是拍空旷广场的唯一机会。教堂需<strong>提前网上预约</strong>（€3预约费，入场免费）</p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Venezia_piazza_s.Marco.JPG" alt="圣马可广场">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Venezia_piazza_s.Marco.JPG" alt="圣马可广场" loading="lazy" decoding="async">
       <p class="spot-img-caption">圣马可广场与大教堂 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>大教堂内部必看：</strong><br>
@@ -1374,7 +1560,7 @@
     <div class="content-col">
       <h3>古罗马三合一：斗兽场 + 遗址 + 帕拉蒂尼山 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
       <p>建议购买 <strong>Full Experience 票 €24/人</strong>（含竞技场地面层+地下通道），体验感翻倍</p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1280px-Colosseo_2020.jpg" alt="罗马斗兽场">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1280px-Colosseo_2020.jpg" alt="罗马斗兽场" loading="lazy" decoding="async">
       <p class="spot-img-caption">罗马斗兽场 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>斗兽场内部（1.5-2小时）：</strong><br>
@@ -1475,7 +1661,7 @@
     <div class="content-col">
       <h3>梵蒂冈博物馆 + 西斯廷礼拜堂 <span class="tag tag-spot">景点</span><span class="tag tag-photo">拍照</span></h3>
       <p>早鸟08:00时段入场。€25/人（含€5预订费）。博物馆全长超过7km，重点走精华路线</p>
-      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Gallery_of_Maps_%28Vatican_Museums%29_September_2015-2.jpg/1280px-Gallery_of_Maps_%28Vatican_Museums%29_September_2015-2.jpg" alt="梵蒂冈地图廊">
+      <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Gallery_of_Maps_%28Vatican_Museums%29_September_2015-2.jpg/1280px-Gallery_of_Maps_%28Vatican_Museums%29_September_2015-2.jpg" alt="梵蒂冈地图廊" loading="lazy" decoding="async">
       <p class="spot-img-caption">梵蒂冈博物馆地图廊 | 图源 Wikimedia Commons</p>
       <div class="highlights">
         <strong>精华路线（约2.5-3小时）：</strong><br>
@@ -1549,7 +1735,7 @@
 
 <!-- Paris -->
 <div class="accom-card">
-  <img class="accom-img" src="https://a0.muscache.com/im/pictures/miso/Hosting-52696717/original/233ffed7-978c-4649-948f-0b3baa9c7be9.jpeg" alt="巴黎圣母院公寓">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/miso/Hosting-52696717/original/233ffed7-978c-4649-948f-0b3baa9c7be9.jpeg" alt="巴黎圣母院公寓" loading="lazy" decoding="async">
   <div class="accom-info">
     <div class="accom-name">两间不同凡响的客房，位于巴黎圣母院 <span class="accom-badge">已预订</span></div>
     <div class="accom-meta">
@@ -1563,7 +1749,7 @@
 
 <!-- Cologne -->
 <div class="accom-card">
-  <img class="accom-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Koelner_Dom_bei_Nacht_-_Suedseite.jpg/800px-Koelner_Dom_bei_Nacht_-_Suedseite.jpg" alt="科隆大教堂">
+  <img class="accom-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Koelner_Dom_bei_Nacht_-_Suedseite.jpg/800px-Koelner_Dom_bei_Nacht_-_Suedseite.jpg" alt="科隆大教堂" loading="lazy" decoding="async">
   <div class="accom-info">
     <div class="accom-name">Ina Hotel Royal（Trip.com 预订）<span class="accom-badge">已预订</span></div>
     <div class="accom-meta">
@@ -1577,7 +1763,7 @@
 
 <!-- Munich -->
 <div class="accom-card">
-  <img class="accom-img" src="https://a0.muscache.com/im/pictures/hosting/Hosting-4161164/original/22eacbc6-f5f6-4d8b-9fd2-aa12c09a76db.jpeg" alt="慕尼黑安静的绿洲">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/hosting/Hosting-4161164/original/22eacbc6-f5f6-4d8b-9fd2-aa12c09a76db.jpeg" alt="慕尼黑安静的绿洲" loading="lazy" decoding="async">
   <div class="accom-info">
     <div class="accom-name">安静的绿洲 — 10分钟到市区+靠近河流 <span class="accom-badge">已预订</span></div>
     <div class="accom-meta">
@@ -1592,7 +1778,7 @@
 
 <!-- Grindelwald -->
 <div class="accom-card">
-  <img class="accom-img" src="https://a0.muscache.com/im/pictures/9995e72c-a7d0-4749-b4a7-08d1e52e30f5.jpg" alt="格林德瓦公寓">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/9995e72c-a7d0-4749-b4a7-08d1e52e30f5.jpg" alt="格林德瓦公寓" loading="lazy" decoding="async">
   <div class="accom-info">
     <div class="accom-name">Grindelwald Burglauenen 公寓 <span class="accom-badge">已预订</span></div>
     <div class="accom-meta">
@@ -1607,7 +1793,7 @@
 
 <!-- Venice -->
 <div class="accom-card">
-  <img class="accom-img" src="https://a0.muscache.com/im/pictures/12488841/0eda2764_original.jpg" alt="威尼斯Ca'Falcao">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/12488841/0eda2764_original.jpg" alt="威尼斯Ca'Falcao" loading="lazy" decoding="async">
   <div class="accom-info">
     <div class="accom-name">Ca'Falcao <span class="accom-badge">已预订</span></div>
     <div class="accom-meta">
@@ -1622,7 +1808,7 @@
 
 <!-- Rome -->
 <div class="accom-card">
-  <img class="accom-img" src="https://a0.muscache.com/im/pictures/9a89e0d6-0b1f-472d-a102-4a1d33aecb0d.jpg" alt="罗马Chroma Tessera">
+  <img class="accom-img" src="https://a0.muscache.com/im/pictures/9a89e0d6-0b1f-472d-a102-4a1d33aecb0d.jpg" alt="罗马Chroma Tessera" loading="lazy" decoding="async">
   <div class="accom-info">
     <div class="accom-name">Chroma Tessera（B&B 含早餐）<span class="accom-badge">已预订</span></div>
     <div class="accom-meta">
@@ -1668,74 +1854,24 @@
 
 </div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<!-- Leaflet JS removed - using Google Maps navigation buttons instead -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
-  // ===== Helpers =====
-  var tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  var tileAttr = '&copy; OpenStreetMap';
-
-  function numIcon(n, color) {
-    return L.divIcon({
-      className: '',
-      html: '<div style="background:'+color+';color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.3);">'+n+'</div>',
-      iconSize: [26,26], iconAnchor: [13,13], popupAnchor: [0,-14]
-    });
-  }
-
-  function cityIcon(label, color) {
-    return L.divIcon({
-      className: '',
-      html: '<div style="background:'+color+';color:#fff;width:auto;padding:4px 10px;border-radius:14px;font-size:12px;font-weight:700;white-space:nowrap;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);text-align:center;">'+label+'</div>',
-      iconSize: null, iconAnchor: [40,14], popupAnchor: [0,-16]
-    });
-  }
-
-  function popup(title, time, info) {
-    return '<b>'+title+'</b><br><span class="pop-time">'+time+'</span><br><span class="pop-info">'+info+'</span>';
-  }
-
-  // ===== OVERVIEW MAP =====
-  var om = L.map('overview-map', {scrollWheelZoom: false}).setView([47.0, 8.5], 5);
-  L.tileLayer(tileUrl, {attribution: tileAttr, maxZoom: 18}).addTo(om);
-
+  // ===== Overview cities data (kept for reference) =====
   var cities = [
     {name:'巴黎', pos:[48.8566,2.3522], dates:'Day 1-4 · 3/31-4/3', color:'#2B5797', info:'3晚 | 卢浮宫·铁塔·凡尔赛·圣母院'},
     {name:'科隆', pos:[50.9375,6.9603], dates:'Day 4-5 · 4/3-4/4', color:'#D4A017', info:'1晚 | 大教堂·霍亨索伦桥'},
     {name:'慕尼黑', pos:[48.1351,11.5820], dates:'Day 5-8 · 4/4-4/7', color:'#D4A017', info:'3晚 | 安联球场·国王湖·新天鹅堡'},
-    {name:'🔄苏黎世', pos:[47.3769,8.5417], dates:'Day 8 · 4/7 换乘游', color:'#FF6F00', info:'⏱️3h | 班霍夫大街·利马特河·老城'},
-    {name:'🔄因特拉肯', pos:[46.6907,7.8692], dates:'Day 8 · 4/7 换乘游', color:'#FF6F00', info:'⏱️1.5h | 三山全景·超市补给'},
+    {name:'苏黎世', pos:[47.3769,8.5417], dates:'Day 8 · 4/7 换乘游', color:'#FF6F00', info:'3h | 班霍夫大街·利马特河·老城'},
+    {name:'因特拉肯', pos:[46.6907,7.8692], dates:'Day 8 · 4/7 换乘游', color:'#FF6F00', info:'1.5h | 三山全景·超市补给'},
     {name:'格林德瓦', pos:[46.6240,8.0414], dates:'Day 8-10 · 4/7-4/9', color:'#C62828', info:'2晚 | 少女峰·阿尔卑斯'},
-    {name:'🔄米兰', pos:[45.4861,9.2042], dates:'Day 10 · 4/9 换乘游', color:'#FF6F00', info:'⏱️2.5h | Duomo大教堂·长廊'},
+    {name:'米兰', pos:[45.4861,9.2042], dates:'Day 10 · 4/9 换乘游', color:'#FF6F00', info:'2.5h | Duomo大教堂·长廊'},
     {name:'威尼斯', pos:[45.4408,12.3155], dates:'Day 10-12 · 4/9-4/11', color:'#2E7D32', info:'2晚 | 圣马可·贡多拉·彩色岛'},
     {name:'罗马', pos:[41.9028,12.4964], dates:'Day 12-14 · 4/11-4/13', color:'#2E7D32', info:'2晚 | 斗兽场·梵蒂冈·Trastevere'}
   ];
 
-  var segments = [
-    {from:0, to:1, label:'Eurostar 高铁 · 3.5h'},
-    {from:1, to:2, label:'ICE 527 高铁 · 4.5h ✅已订'},
-    {from:2, to:3, label:'EC列车 · 3.5h'},
-    {from:3, to:4, label:'IC列车 · 2h（图恩湖段最美！）'},
-    {from:4, to:5, label:'齿轨列车 · 35min'},
-    {from:5, to:6, label:'EC+跨境 经Simplon · 5-6h'},
-    {from:6, to:7, label:'Frecciarossa 9741 · 2.5h ✅已订'},
-    {from:7, to:8, label:'Frecciarossa · 3.5h（待订）'}
-  ];
-
-  segments.forEach(function(s) {
-    var line = L.polyline([cities[s.from].pos, cities[s.to].pos], {color:'#5C3D99', weight:3, opacity:0.6, dashArray:'8,6'}).addTo(om);
-    line.bindPopup('<b>'+cities[s.from].name+' → '+cities[s.to].name+'</b><br>'+s.label);
-  });
-
-  cities.forEach(function(c) {
-    L.marker(c.pos, {icon: cityIcon(c.name, c.color)}).addTo(om)
-      .bindPopup('<b>'+c.name+'</b><br><span class="pop-time">'+c.dates+'</span><br><span class="pop-info">'+c.info+'</span>');
-  });
-
-  om.fitBounds(cities.map(function(c){return c.pos;}), {padding:[40,40]});
-
-  // ===== DAY MAPS DATA =====
+  // ===== DAY MAPS DATA (coordinates used for navigation buttons) =====
   var days = [
     // Day 1
     {color:'#2B5797', center:[48.9,2.45], zoom:11, markers:[
@@ -1928,8 +2064,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // ===== DAY CARDS PAGINATION =====
   var allCards = document.querySelectorAll('#day-cards-container .day-card');
   var currentDay = 0;
-  var mapInstances = {};
-
   function goToDay(idx) {
     if (idx < 0 || idx >= allCards.length) return;
     currentDay = idx;
@@ -1969,13 +2103,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Build time navigation for this day
     buildTimeNav(idx);
-
-    // Initialize map if toggle is open
-    var card = allCards[idx];
-    var mapWrap = card.querySelector('.day-map-wrap');
-    if (mapWrap && mapWrap.classList.contains('open') && !mapInstances[idx]) {
-      setTimeout(function() { initDayMap(idx); }, 100);
-    }
 
     // Scroll to pagination
     document.getElementById('day-pagination').scrollIntoView({behavior:'smooth', block:'start'});
@@ -2070,60 +2197,37 @@ document.addEventListener('DOMContentLoaded', function() {
     header.parentNode.insertBefore(nav, header.nextSibling);
   }
 
-  // ===== INJECT DAY MAP TOGGLE + MAP INTO EACH DAY CARD =====
+  // ===== INJECT NAVIGATION BUTTONS INTO EACH DAY CARD =====
   allCards.forEach(function(card, idx) {
     if (idx >= days.length) return;
-    var header = card.querySelector('.day-header');
+    var d = days[idx];
+    var timeBlocks = card.querySelectorAll('.time-block');
 
-    // Add toggle button
-    var btn = document.createElement('button');
-    btn.className = 'map-toggle';
-    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Map';
-    header.appendChild(btn);
+    // Match time blocks to markers by title keywords
+    d.markers.forEach(function(m) {
+      var titleKeywords = m.title.replace(/[🔄🆕]/g, '').trim();
+      var firstWord = titleKeywords.split(/\s+/)[0];
 
-    // Add map container
-    var wrap = document.createElement('div');
-    wrap.className = 'day-map-wrap';
-    wrap.id = 'day-map-wrap-' + idx;
-    var mapDiv = document.createElement('div');
-    mapDiv.className = 'day-map';
-    mapDiv.id = 'day-map-' + idx;
-    wrap.appendChild(mapDiv);
-    card.querySelector('.timeline').prepend(wrap);
-
-    // Toggle
-    btn.addEventListener('click', function() {
-      var isOpen = wrap.classList.toggle('open');
-      if (isOpen && !mapInstances[idx]) {
-        setTimeout(function() { initDayMap(idx); }, 100);
-      } else if (isOpen && mapInstances[idx]) {
-        mapInstances[idx].invalidateSize();
-      }
+      timeBlocks.forEach(function(block) {
+        var h3 = block.querySelector('h3');
+        if (!h3) return;
+        var h3Text = h3.textContent || '';
+        // Match if the first keyword of marker title appears in the h3
+        if (h3Text.indexOf(firstWord) !== -1 && !block.querySelector('.nav-btn')) {
+          var contentCol = block.querySelector('.content-col');
+          if (contentCol) {
+            var navLink = document.createElement('a');
+            navLink.href = 'https://www.google.com/maps/dir/?api=1&destination=' + m.pos[0] + ',' + m.pos[1] + '&travelmode=transit';
+            navLink.className = 'nav-btn';
+            navLink.target = '_blank';
+            navLink.rel = 'noopener';
+            navLink.textContent = '\uD83D\uDCCD \u5BFC\u822A\u5230\u8FD9\u91CC';
+            contentCol.appendChild(navLink);
+          }
+        }
+      });
     });
   });
-
-  function initDayMap(idx) {
-    var d = days[idx];
-    var map = L.map('day-map-' + idx, {scrollWheelZoom: false}).setView(d.center, d.zoom);
-    L.tileLayer(tileUrl, {attribution: tileAttr, maxZoom: 18}).addTo(map);
-
-    if (d.route) L.polyline(d.route, {color: d.color, weight: 3, opacity: 0.6}).addTo(map);
-    if (d.route2) L.polyline(d.route2, {color: d.color, weight: 3, opacity: 0.6}).addTo(map);
-
-    d.markers.forEach(function(m, i) {
-      L.marker(m.pos, {icon: numIcon(i+1, d.color)}).addTo(map)
-        .bindPopup(popup(m.title, m.time, m.info));
-    });
-
-    if (d.markers.length > 1) {
-      var bounds = L.latLngBounds(d.markers.map(function(m){return m.pos;}));
-      if (bounds.getNorthEast().distanceTo(bounds.getSouthWest()) > 5000) {
-        map.fitBounds(bounds, {padding: [30,30], maxZoom: d.zoom});
-      }
-    }
-
-    mapInstances[idx] = map;
-  }
 
   // ===== KEYBOARD NAVIGATION =====
   document.addEventListener('keydown', function(e) {
@@ -2182,6 +2286,7 @@ document.addEventListener('DOMContentLoaded', function() {
         img.src = si.url;
         img.alt = key;
         img.loading = 'lazy';
+        img.decoding = 'async';
         img.onerror = function() { this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='none'; };
         var cap = document.createElement('p');
         cap.className = 'spot-img-caption';
