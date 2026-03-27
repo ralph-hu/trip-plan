@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "telegram@claude-plugins-official": true
+  },
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "chrome-devtools-mcp",
+      "args": []
+    }
+  },
+  "skipDangerousModePermissionPrompt": true
+}

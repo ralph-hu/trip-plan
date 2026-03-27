@@ -217,12 +217,26 @@
   .emergency-card a:hover { text-decoration: underline; }
   .emergency-card .phone-label { color: #555; font-weight: 400; font-size: 0.82em; }
 
-  /* ===== Location Card (replacing maps) ===== */
-  .location-card { background: #f8f9ff; border-radius: 12px; padding: 16px 22px; margin: 12px 22px; border: 1px solid #e0e4f0; }
-  .location-card h3 { font-size: 1em; color: #1a1a2e; margin-bottom: 10px; }
-  .location-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
-  .location-card-item { font-size: 0.82em; color: #555; padding: 4px 0; }
-  .location-card-item b { color: #2B5797; }
+  /* ===== Route Flow Diagram ===== */
+  .route-flow { padding: 16px 22px 22px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .route-flow-track { display: flex; align-items: flex-start; gap: 0; min-width: max-content; padding: 8px 0; }
+  .route-stop { display: flex; flex-direction: column; align-items: center; position: relative; }
+  .route-stop-dot { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.2); position: relative; z-index: 2; }
+  .route-stop-dot.small { width: 32px; height: 32px; font-size: 13px; border-width: 2px; opacity: 0.85; }
+  .route-stop-name { font-size: 0.82em; font-weight: 700; margin-top: 8px; white-space: nowrap; }
+  .route-stop-days { font-size: 0.7em; color: #888; margin-top: 2px; white-space: nowrap; }
+  .route-stop-info { font-size: 0.65em; color: #aaa; margin-top: 2px; white-space: nowrap; }
+  .route-arrow { display: flex; align-items: center; padding: 0 6px; margin-top: 10px; }
+  .route-arrow-line { height: 2px; width: 32px; position: relative; }
+  .route-arrow-line::after { content: ''; position: absolute; right: -4px; top: -4px; border: 5px solid transparent; border-left-width: 6px; }
+  .route-arrow-label { font-size: 0.6em; color: #999; white-space: nowrap; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); }
+  @media (max-width: 600px) {
+    .route-stop-dot { width: 36px; height: 36px; font-size: 15px; }
+    .route-stop-dot.small { width: 28px; height: 28px; font-size: 11px; }
+    .route-stop-name { font-size: 0.72em; }
+    .route-arrow-line { width: 20px; }
+    .route-flow { padding: 12px 14px 16px; }
+  }
 
   /* ===== Mobile Optimization ===== */
   @media (max-width: 600px) {
@@ -402,10 +416,10 @@
     .day-nav-btn:hover { background: #333; }
     .day-nav-btn.next { background: #2B5797; color: #fff; border-color: #2B5797; }
 
-    .location-card { background: #1e2040; border-color: #333; }
-    .location-card h3 { color: #e0e0f0; }
-    .location-card-item { color: #bbb; }
-    .location-card-item b { color: #82b1ff; }
+    .route-stop-name { color: #e0e0f0; }
+    .route-stop-days { color: #999; }
+    .route-stop-info { color: #777; }
+    .route-arrow-label { color: #777; }
 
     .emergency-section { background: #252540; }
     .emergency-toggle { background: #252540; color: #ef9a9a; }
@@ -623,31 +637,19 @@
   </div>
 </div>
 
-<!-- ==================== OVERVIEW MAP (replaced with location card) ==================== -->
+<!-- ==================== OVERVIEW ROUTE FLOW ==================== -->
 <div class="map-section">
   <h2>总览路线 — 4国14天</h2>
-  <p class="map-subtitle">点击城市名称可导航到该城市</p>
+  <p class="map-subtitle">横向滑动查看完整路线。大圆点为住宿城市，小圆点为换乘停留</p>
   <div class="map-legend">
     <span class="legend-item"><span class="legend-dot" style="background:#2B5797;"></span>法国</span>
     <span class="legend-item"><span class="legend-dot" style="background:#D4A017;"></span>德国</span>
     <span class="legend-item"><span class="legend-dot" style="background:#C62828;"></span>瑞士</span>
     <span class="legend-item"><span class="legend-dot" style="background:#2E7D32;"></span>意大利</span>
-    <span class="legend-item"><span class="legend-dot" style="background:#5C3D99;"></span>跨国交通</span>
-    <span class="legend-item"><span class="legend-dot" style="background:#FF6F00;"></span>换乘游</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#FF6F00;"></span>换乘停留</span>
   </div>
-  <div class="location-card">
-    <h3>途经城市</h3>
-    <div class="location-card-grid">
-      <div class="location-card-item"><b>巴黎</b> Day 1-4<br><a href="https://www.google.com/maps/dir/?api=1&destination=48.8566,2.3522&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到巴黎</a></div>
-      <div class="location-card-item"><b>科隆</b> Day 4-5<br><a href="https://www.google.com/maps/dir/?api=1&destination=50.9375,6.9603&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到科隆</a></div>
-      <div class="location-card-item"><b>慕尼黑</b> Day 5-8<br><a href="https://www.google.com/maps/dir/?api=1&destination=48.1351,11.5820&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到慕尼黑</a></div>
-      <div class="location-card-item"><b>苏黎世</b> Day 8 换乘<br><a href="https://www.google.com/maps/dir/?api=1&destination=47.3769,8.5417&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到苏黎世</a></div>
-      <div class="location-card-item"><b>因特拉肯</b> Day 8 换乘<br><a href="https://www.google.com/maps/dir/?api=1&destination=46.6907,7.8692&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到因特拉肯</a></div>
-      <div class="location-card-item"><b>格林德瓦</b> Day 8-10<br><a href="https://www.google.com/maps/dir/?api=1&destination=46.6240,8.0414&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到格林德瓦</a></div>
-      <div class="location-card-item"><b>米兰</b> Day 10 换乘<br><a href="https://www.google.com/maps/dir/?api=1&destination=45.4861,9.2042&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到米兰</a></div>
-      <div class="location-card-item"><b>威尼斯</b> Day 10-12<br><a href="https://www.google.com/maps/dir/?api=1&destination=45.4408,12.3155&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到威尼斯</a></div>
-      <div class="location-card-item"><b>罗马</b> Day 12-14<br><a href="https://www.google.com/maps/dir/?api=1&destination=41.9028,12.4964&travelmode=transit" class="nav-btn" target="_blank" rel="noopener">导航到罗马</a></div>
-    </div>
+  <div class="route-flow">
+    <div class="route-flow-track" id="route-flow-track"></div>
   </div>
 </div>
 
@@ -1870,6 +1872,50 @@ document.addEventListener('DOMContentLoaded', function() {
     {name:'威尼斯', pos:[45.4408,12.3155], dates:'Day 10-12 · 4/9-4/11', color:'#2E7D32', info:'2晚 | 圣马可·贡多拉·彩色岛'},
     {name:'罗马', pos:[41.9028,12.4964], dates:'Day 12-14 · 4/11-4/13', color:'#2E7D32', info:'2晚 | 斗兽场·梵蒂冈·Trastevere'}
   ];
+
+  // ===== BUILD ROUTE FLOW DIAGRAM =====
+  var routeStops = [
+    {name:'巴黎', emoji:'🇫🇷', color:'#2B5797', days:'Day 1-4', nights:'3晚', info:'卢浮宫·铁塔·凡尔赛', main:true},
+    {arrow:true, label:'Eurostar 3.5h', color:'#5C3D99'},
+    {name:'科隆', emoji:'🇩🇪', color:'#D4A017', days:'Day 4-5', nights:'1晚', info:'大教堂·霍亨索伦桥', main:true},
+    {arrow:true, label:'ICE 4.5h', color:'#D4A017'},
+    {name:'慕尼黑', emoji:'🇩🇪', color:'#D4A017', days:'Day 5-8', nights:'3晚', info:'安联·国王湖·天鹅堡', main:true},
+    {arrow:true, label:'EC 3.5h', color:'#C62828'},
+    {name:'苏黎世', emoji:'🇨🇭', color:'#FF6F00', days:'Day 8', nights:'换乘3h', info:'班霍夫大街·老城', main:false},
+    {arrow:true, label:'IC 2h', color:'#C62828'},
+    {name:'因特拉肯', emoji:'🇨🇭', color:'#FF6F00', days:'Day 8', nights:'换乘1.5h', info:'三山全景', main:false},
+    {arrow:true, label:'齿轨 35min', color:'#C62828'},
+    {name:'格林德瓦', emoji:'🇨🇭', color:'#C62828', days:'Day 8-10', nights:'2晚', info:'少女峰·阿尔卑斯', main:true},
+    {arrow:true, label:'跨境 5h', color:'#2E7D32'},
+    {name:'米兰', emoji:'🇮🇹', color:'#FF6F00', days:'Day 10', nights:'换乘2.5h', info:'Duomo·长廊', main:false},
+    {arrow:true, label:'Frecciarossa 2.5h', color:'#2E7D32'},
+    {name:'威尼斯', emoji:'🇮🇹', color:'#2E7D32', days:'Day 10-12', nights:'2晚', info:'圣马可·贡多拉', main:true},
+    {arrow:true, label:'Italo 3.5h', color:'#2E7D32'},
+    {name:'罗马', emoji:'🇮🇹', color:'#2E7D32', days:'Day 12-14', nights:'2晚', info:'斗兽场·梵蒂冈', main:true},
+    {arrow:true, label:'Leonardo 32min', color:'#2E7D32'},
+    {name:'FCO', emoji:'✈️', color:'#2E7D32', days:'Day 14', nights:'回国', info:'菲乌米奇诺机场', main:false}
+  ];
+  var flowTrack = document.getElementById('route-flow-track');
+  routeStops.forEach(function(s) {
+    if (s.arrow) {
+      var arrow = document.createElement('div');
+      arrow.className = 'route-arrow';
+      arrow.innerHTML = '<div class="route-arrow-line" style="background:'+s.color+'">'
+        + '<span class="route-arrow-label">'+s.label+'</span>'
+        + '</div>';
+      // Add arrow tip via border
+      arrow.querySelector('.route-arrow-line').style.cssText += ';position:relative;';
+      flowTrack.appendChild(arrow);
+    } else {
+      var stop = document.createElement('div');
+      stop.className = 'route-stop';
+      stop.innerHTML = '<div class="route-stop-dot'+(s.main?'':' small')+'" style="background:'+s.color+'">'+s.emoji+'</div>'
+        + '<div class="route-stop-name">'+s.name+'</div>'
+        + '<div class="route-stop-days">'+s.days+(s.nights?' · '+s.nights:'')+'</div>'
+        + '<div class="route-stop-info">'+s.info+'</div>';
+      flowTrack.appendChild(stop);
+    }
+  });
 
   // ===== DAY MAPS DATA (coordinates used for navigation buttons) =====
   var days = [

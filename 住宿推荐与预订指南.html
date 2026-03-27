@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>住宿推荐与预订指南 - 法德瑞意14天</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #333; line-height: 1.7; }
+  .container { max-width: 920px; margin: 0 auto; padding: 20px; }
+  h1 { text-align: center; color: #1a1a2e; font-size: 1.8em; margin: 20px 0 5px; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 25px; font-size: 0.92em; }
+
+  .city-section { background: #fff; border-radius: 14px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); overflow: hidden; }
+  .city-header { padding: 14px 20px; font-weight: 700; font-size: 1.1em; color: #fff; display: flex; justify-content: space-between; align-items: center; }
+  .city-header.paris { background: linear-gradient(135deg, #2B5797, #1e3c72); }
+  .city-header.cologne { background: linear-gradient(135deg, #5C3D99, #3a1f6e); }
+  .city-header.munich { background: linear-gradient(135deg, #D4A017, #b8860b); color: #1a1a1a; }
+  .city-header.grindelwald { background: linear-gradient(135deg, #C62828, #8e0000); }
+  .city-header.venice { background: linear-gradient(135deg, #0277BD, #01579B); }
+  .city-header.rome { background: linear-gradient(135deg, #2E7D32, #1b5e20); }
+
+  .city-body { padding: 16px 20px; }
+  .hotel-card { border: 1px solid #e0e0e0; border-radius: 10px; padding: 14px 18px; margin: 10px 0; transition: box-shadow 0.2s; }
+  .hotel-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .hotel-card.recommended { border-color: #4CAF50; border-width: 2px; }
+  .hotel-name { font-weight: 700; font-size: 1.05em; color: #1a1a2e; }
+  .hotel-name .star { color: #FFC107; }
+  .hotel-name .badge { display: inline-block; font-size: 0.7em; padding: 2px 8px; border-radius: 4px; margin-left: 6px; background: #E8F5E9; color: #2E7D32; font-weight: 600; vertical-align: middle; }
+  .hotel-meta { display: flex; flex-wrap: wrap; gap: 16px; margin: 6px 0; font-size: 0.88em; color: #555; }
+  .hotel-meta .label { font-weight: 600; color: #666; }
+  .price { color: #C62828; font-weight: 700; }
+  .tip { background: #FFF8E1; border-left: 4px solid #FFC107; padding: 8px 12px; margin: 8px 0; border-radius: 0 6px 6px 0; font-size: 0.85em; }
+  .area-info { background: #E3F2FD; border-left: 4px solid #1565C0; padding: 8px 12px; margin: 8px 0; border-radius: 0 6px 6px 0; font-size: 0.85em; }
+
+  .prompt-section { background: #EDE7F6; border-radius: 14px; padding: 20px; margin: 24px 0; }
+  .prompt-section h2 { color: #5C3D99; margin-bottom: 12px; }
+  .prompt-box { background: #fff; border: 1px solid #d1c4e9; border-radius: 8px; padding: 14px 18px; margin: 10px 0; font-size: 0.88em; }
+  .prompt-box h4 { color: #5C3D99; margin-bottom: 8px; }
+  .prompt-text { font-family: "SF Mono", Monaco, monospace; font-size: 0.85em; background: #f5f0ff; padding: 12px; border-radius: 6px; white-space: pre-wrap; line-height: 1.6; }
+
+  .summary-table { width: 100%; border-collapse: collapse; font-size: 0.88em; margin: 16px 0; }
+  .summary-table th { text-align: left; padding: 8px 10px; border-bottom: 2px solid #5C3D99; color: #5C3D99; }
+  .summary-table td { padding: 8px 10px; border-bottom: 1px solid #eee; }
+  .total-row { font-weight: 700; background: #f5f0ff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>住宿推荐与预订指南</h1>
+<p class="subtitle">法德瑞意14天 | 2026.3.31-4.13 | 3人家庭 | 含具体酒店推荐 + Claude in Chrome 预订 Prompt</p>
+
+<!-- ========== PARIS ========== -->
+<div class="city-section">
+<div class="city-header paris">
+  <span>巴黎 Paris — 3晚（3.31-4.03）</span>
+  <span style="font-weight:400;font-size:0.85em;">预算 €120-180/晚</span>
+</div>
+<div class="city-body">
+  <div class="area-info">
+    <strong>推荐区域：Le Marais 玛黑区（3区/4区）</strong> — 巴黎最安全、最有活力的街区之一。步行可达卢浮宫(15min)、圣母院(10min)、蓬皮杜中心(5min)。餐厅密集，地铁1/11号线覆盖。也可选 Saint-Germain（6区），更安静优雅
+  </div>
+
+  <div class="hotel-card recommended">
+    <div class="hotel-name">Hotel Jeanne d'Arc Le Marais <span class="star">★★★</span> <span class="badge">性价比之选</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>距 Place des Vosges 1分钟</span>
+      <span><span class="label">价格：</span><span class="price">约 €130-160/晚（三人间）</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>TripAdvisor 常年玛黑区Top 3，家庭友好，有三人间，位置极佳</span>
+    </div>
+    <div class="tip">极其热门，建议立即查看3.31-4.03的空房！如已满可看下方备选</div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Hotel Bastille Speria <span class="star">★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Bastille地铁站旁，玛黑区边缘</span>
+      <span><span class="label">价格：</span><span class="price">约 €120-150/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>地铁站紧邻，步行可达圣母院和卢浮宫，评分高</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Hotel Turenne Le Marais <span class="star">★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Place des Vosges 旁</span>
+      <span><span class="label">价格：</span><span class="price">约 €130-170/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>位置完美，步行到卡纳瓦莱博物馆、餐厅云集</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Hotel Duo <span class="star">★★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>玛黑区核心</span>
+      <span><span class="label">价格：</span><span class="price">约 €160-200/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>4星品质，现代设计，有电梯，可住3人</span>
+    </div>
+  </div>
+
+  <div class="tip">Airbnb 替代方案：玛黑区2卧整套公寓 约€140-180/晚，有厨房可做早餐，3人住比酒店宽敞。但注意选有电梯的楼（巴黎老楼多无电梯）</div>
+</div>
+</div>
+
+<!-- ========== COLOGNE ========== -->
+<div class="city-section">
+<div class="city-header cologne">
+  <span>科隆 Koln — 1晚（4.03）</span>
+  <span style="font-weight:400;font-size:0.85em;">预算 €80-130/晚</span>
+</div>
+<div class="city-body">
+  <div class="area-info">
+    <strong>推荐区域：大教堂/火车站步行5分钟内</strong> — 只住1晚，次日一早赶ICE去慕尼黑，必须离火车站近
+  </div>
+
+  <div class="hotel-card recommended">
+    <div class="hotel-name">CityClass Hotel am Dom <span class="star">★★★</span> <span class="badge">首选</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>距大教堂150米，火车站2分钟</span>
+      <span><span class="label">价格：</span><span class="price">约 €90-130/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>位置绝佳，现代空调房，早餐好评。家庭住客高分推荐</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Koncept Hotel zum kostbaren Blut <span class="star">★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>大教堂和火车站步行范围内</span>
+      <span><span class="label">价格：</span><span class="price">约 €80-110/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>高性价比，现代装修，有免费WiFi</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">SMARTY Cologne Dom Hotel <span class="star">★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>距大教堂1分钟步行</span>
+      <span><span class="label">价格：</span><span class="price">约 €85-120/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>现代家具，部分房间可看到大教堂</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ========== MUNICH ========== -->
+<div class="city-section">
+<div class="city-header munich">
+  <span>慕尼黑 Munchen — 3晚（4.04-4.07）</span>
+  <span style="font-weight:400;font-size:0.85em;">预算 €100-180/晚</span>
+</div>
+<div class="city-body">
+  <div class="area-info">
+    <strong>推荐区域：Marienplatz / Hauptbahnhof（中央火车站）附近</strong> — 需要：1) U6到安联球场方便 2) 提/还租车方便 3) 最后一天去火车站方便。Marienplatz 或 火车站 均满足
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Aloft Munchen <span class="star">★★★★</span> <span class="badge">性价比最高</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Bayerstrasse 37，中央火车站旁</span>
+      <span><span class="label">价格：</span><span class="price">约 €101/晚起</span></span>
+      <span><span class="label">评分：</span>8.5/10（1,897条评价）</span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>现代设计，火车站步行2分钟（还车+出发超方便），地铁直达Marienplatz。3晚仅约€300</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Boutique Hotel Splendid <span class="star">★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Thierschstrasse 49，步行16分钟到Marienplatz</span>
+      <span><span class="label">价格：</span><span class="price">约 €175/晚</span></span>
+      <span><span class="label">评分：</span>8.7/10（1,911条评价）</span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>精品酒店质感，评分高，伊萨尔河边环境好</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Platzl Hotel <span class="star">★★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Marienplatz 步行5分钟</span>
+      <span><span class="label">价格：</span><span class="price">约 €331/晚</span></span>
+      <span><span class="label">评分：</span>8.9/10（3,128条评价）</span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>家族经营百年老店，巴伐利亚风格，位置绝佳但价格高</span>
+    </div>
+  </div>
+
+  <div class="tip">推荐 Aloft Munchen：€101/晚在慕尼黑属于极佳性价比，且紧邻火车站，Day 8 还车后步行2分钟到站乘火车去瑞士</div>
+</div>
+</div>
+
+<!-- ========== GRINDELWALD ========== -->
+<div class="city-section">
+<div class="city-header grindelwald">
+  <span>格林德瓦 Grindelwald — 2晚（4.07-4.09）</span>
+  <span style="font-weight:400;font-size:0.85em;">预算 CHF 150-250/晚</span>
+</div>
+<div class="city-body">
+  <div class="area-info">
+    <strong>推荐区域：Grindelwald Terminal（艾格快线站）步行范围内</strong> — 次日要坐艾格快线上少女峰，住在Terminal附近最方便。格林德瓦很小，基本哪里都能步行到
+  </div>
+
+  <div class="hotel-card recommended">
+    <div class="hotel-name">Eiger Lodge <span class="star">★★★</span> <span class="badge">位置最佳</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>艾格快线 Terminal 正旁边</span>
+      <span><span class="label">价格：</span><span class="price">约 CHF 150-200/晚（家庭间含独卫）</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>Chic版有家庭间+独立卫浴。距艾格快线最近，少女峰日出发步行1分钟到站</span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">官网：</span>eigerlodge.ch</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Eiger Mountain & Soul Resort <span class="star">★★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>距缆车和滑雪道5分钟，火车站500米</span>
+      <span><span class="label">价格：</span><span class="price">约 CHF 200-300/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>60间房/套房/公寓/木屋可选，4星级，设施齐全</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Chalet Eiger by Interhome <span class="badge">整套木屋</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>距 Terminal 站50米！</span>
+      <span><span class="label">价格：</span><span class="price">约 CHF 180-250/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>4室126平米阁楼公寓，有壁炉，真正的瑞士木屋体验。Interhome平台预订</span>
+    </div>
+  </div>
+
+  <div class="tip">格林德瓦4月是淡季（滑雪季末/夏季未到），价格比旺季低30-50%。但热门木屋仍然抢手，建议尽早预订。Coop超市在镇中心，买食材自炊最省钱</div>
+</div>
+</div>
+
+<!-- ========== VENICE ========== -->
+<div class="city-section">
+<div class="city-header venice">
+  <span>威尼斯 Venezia — 2晚（4.09-4.11）</span>
+  <span style="font-weight:400;font-size:0.85em;">预算 €100-170/晚</span>
+</div>
+<div class="city-body">
+  <div class="area-info">
+    <strong>推荐区域：Cannaregio（坎纳雷吉欧）</strong> — 本地人生活区，比San Marco便宜30-40%，步行10分钟到里亚托桥。从火车站Santa Lucia步行即达（拖行李友好！），有本地餐馆和冰淇淋店
+  </div>
+
+  <div class="hotel-card recommended">
+    <div class="hotel-name">Carnival Palace Hotel <span class="star">★★★★</span> <span class="badge">家庭首选</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Cannaregio区</span>
+      <span><span class="label">价格：</span><span class="price">约 €130-170/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>大房间可住4-6人，有花园（威尼斯罕见！），家庭间连通房可选</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Eurostars Residenza Cannaregio <span class="star">★★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Cannaregio区，犹太区旁</span>
+      <span><span class="label">价格：</span><span class="price">约 €120-160/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>4星连锁品质保证，10分钟步行到市中心</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Ca' Due Leoni <span class="star">★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Cannaregio，面向小广场</span>
+      <span><span class="label">价格：</span><span class="price">约 €100-140/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>家庭经营，四人间含独卫+早餐，免费WiFi，步行到火车站和大运河</span>
+    </div>
+  </div>
+
+  <div class="tip">威尼斯住宿关键注意：1) 确认有电梯（老建筑多无电梯）2) 确认空调 3) 离水上巴士站近。携带行李走威尼斯石桥台阶非常痛苦，选Cannaregio从火车站平路即达</div>
+</div>
+</div>
+
+<!-- ========== ROME ========== -->
+<div class="city-section">
+<div class="city-header rome">
+  <span>罗马 Roma — 2晚（4.11-4.13）</span>
+  <span style="font-weight:400;font-size:0.85em;">预算 €90-150/晚</span>
+</div>
+<div class="city-body">
+  <div class="area-info">
+    <strong>推荐区域：Monti 蒙蒂区</strong> — 罗马最潮的老城区，步行5分钟到斗兽场和古罗马遗址，地铁B线 Cavour 站直达 Termini（取行李+机场快线）和 Flaminio（去奥林匹克球场看意甲）。酒吧餐厅密集但不吵
+  </div>
+
+  <div class="hotel-card recommended">
+    <div class="hotel-name">Condominio Monti <span class="star">★★★</span> <span class="badge">位置+口碑</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Monti区核心，Cavour地铁站旁</span>
+      <span><span class="label">价格：</span><span class="price">约 €100-140/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>干净时尚，步行到斗兽场5分钟，到Termini地铁1站。评价"完美位置"</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Hotel Colosseum <span class="star">★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Via Sforza，斗兽场步行范围</span>
+      <span><span class="label">价格：</span><span class="price">约 €90-130/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>以斗兽场命名，位置好，家庭间可选</span>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-name">Monti Palace Hotel <span class="star">★★★★</span></div>
+    <div class="hotel-meta">
+      <span><span class="label">位置：</span>Monti区</span>
+      <span><span class="label">价格：</span><span class="price">约 €140-180/晚</span></span>
+    </div>
+    <div class="hotel-meta">
+      <span><span class="label">亮点：</span>4星品质，有屋顶露台看罗马全景</span>
+    </div>
+  </div>
+
+  <div class="tip">最后一天行李寄存在 Termini 站（€6-12/件），轻装游梵蒂冈后原路回 Termini 取行李坐机场快线。住 Monti 到 Termini 只需1站地铁或步行15分钟</div>
+</div>
+</div>
+
+<!-- ========== BUDGET SUMMARY ========== -->
+<div class="city-section">
+<div class="city-header" style="background: linear-gradient(135deg, #333, #111);">
+  <span>住宿预算总览（13晚）</span>
+</div>
+<div class="city-body">
+<table class="summary-table">
+<tr><th>城市</th><th>晚数</th><th>推荐酒店</th><th>预估单价/晚</th><th>小计</th></tr>
+<tr><td>巴黎</td><td>3晚</td><td>Hotel Jeanne d'Arc / Bastille Speria</td><td>€140</td><td>€420</td></tr>
+<tr><td>科隆</td><td>1晚</td><td>CityClass am Dom</td><td>€100</td><td>€100</td></tr>
+<tr><td>慕尼黑</td><td>3晚</td><td>Aloft Munchen</td><td>€110</td><td>€330</td></tr>
+<tr><td>格林德瓦</td><td>2晚</td><td>Eiger Lodge Chic</td><td>CHF 180 (≈€185)</td><td>€370</td></tr>
+<tr><td>威尼斯</td><td>2晚</td><td>Carnival Palace / Ca' Due Leoni</td><td>€130</td><td>€260</td></tr>
+<tr><td>罗马</td><td>2晚</td><td>Condominio Monti</td><td>€120</td><td>€240</td></tr>
+<tr class="total-row"><td colspan="4">总计（13晚住宿预估）</td><td style="color:#C62828;font-size:1.1em;">约 €1,720</td></tr>
+</table>
+<div class="tip">以上为中等预算估算。如全用Airbnb整套公寓，可能省10-20%（尤其巴黎和威尼斯）。格林德瓦木屋含厨房自炊也能省下餐费</div>
+</div>
+</div>
+
+<!-- ========== CLAUDE IN CHROME PROMPTS ========== -->
+<div class="prompt-section">
+<h2>Claude in Chrome 预订 Prompts</h2>
+<p style="font-size:0.88em;margin-bottom:16px;">以下 prompt 可直接复制到 Claude in Chrome 中使用。先登录 Booking.com 或 Airbnb，然后让 Claude 帮你操作筛选和比价</p>
+
+<div class="prompt-box">
+<h4>Prompt 1：Booking.com 批量搜索（推荐先用这个）</h4>
+<div class="prompt-text">请帮我在 Booking.com 上依次搜索以下6个城市的酒店，每个城市找出评分8.0+、三人可住、价格最优的3个选项：
+
+1. 巴黎 Le Marais区：3.31入住 4.03退房，3人，预算€120-180/晚
+   优先看：Hotel Jeanne d'Arc, Hotel Bastille Speria, Hotel Turenne Le Marais
+2. 科隆 大教堂旁：4.03入住 4.04退房，3人，预算€80-130/晚
+   优先看：CityClass Hotel am Dom, SMARTY Cologne Dom Hotel
+3. 慕尼黑 火车站附近：4.04入住 4.07退房，3人，预算€100-180/晚
+   优先看：Aloft Munchen, Boutique Hotel Splendid
+4. 格林德瓦：4.07入住 4.09退房，3人，预算CHF150-250/晚
+   优先看：Eiger Lodge, Eiger Mountain & Soul Resort
+5. 威尼斯 Cannaregio区：4.09入住 4.11退房，3人，预算€100-170/晚
+   优先看：Carnival Palace, Eurostars Residenza Cannaregio
+6. 罗马 Monti区：4.11入住 4.13退房，3人，预算€90-150/晚
+   优先看：Condominio Monti, Hotel Colosseum
+
+每个酒店请告诉我：实际价格、评分、是否有三人间、是否有电梯、是否含早餐、取消政策。最后给我一个总价对比表。</div>
+</div>
+
+<div class="prompt-box">
+<h4>Prompt 2：Airbnb 搜索（如果偏好公寓）</h4>
+<div class="prompt-text">请帮我在 Airbnb 上搜索以下住宿，每个城市找出评分4.8+、评论50+的最佳3个选项：
+
+要求统一标准：
+- 整套公寓/房屋（非合住）
+- 至少2间卧室或1卧+沙发床（3人住）
+- 必须有电梯或在低楼层（2楼以内）
+- 有WiFi和洗衣机
+
+城市和日期：
+1. 巴黎 3区/4区(Le Marais)：3.31-4.03，€120-180/晚
+2. 慕尼黑 市中心5km内：4.04-4.07，€100-160/晚
+3. 威尼斯 Cannaregio/San Marco：4.09-4.11，€100-160/晚
+4. 罗马 Monti/Termini附近：4.11-4.13，€90-140/晚
+
+（科隆1晚和格林德瓦2晚建议用酒店，不用搜Airbnb）
+
+每个选项请截图并告诉我：价格、评分、到主要景点步行距离、房东回复率。</div>
+</div>
+
+<div class="prompt-box">
+<h4>Prompt 3：Google Maps 验证位置</h4>
+<div class="prompt-text">我准备预订以下酒店，请帮我在 Google Maps 上验证每个酒店的位置：
+[粘贴你选中的酒店名称和地址]
+
+对每个酒店，请告诉我：
+1. 到最近地铁站的步行距离和时间
+2. 到当天要去的第一个景点的路线和时间
+3. 周边500米内有没有超市和餐厅
+4. 街景看起来是否安全整洁</div>
+</div>
+</div>
+
+<!-- ========== SOURCES ========== -->
+<div style="background:#f5f5f5; border-radius:10px; padding:16px 20px; margin-top:20px; font-size:0.82em; color:#666;">
+  <strong>信息来源：</strong><br>
+  TripAdvisor, Booking.com, Expedia, KAYAK, My Germany Vacation, Santorini Dave, Mama Loves Italy, 各酒店官网<br>
+  价格为2025-2026年搜索结果参考价，实际预订价格以平台显示为准
+</div>
+
+</div>
+</body>
+</html>

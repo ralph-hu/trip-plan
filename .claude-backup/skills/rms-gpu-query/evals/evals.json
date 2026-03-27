@@ -1,0 +1,23 @@
+{
+  "skill_name": "rms-gpu-query",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "查询当前资源池内 X10-X60 的 GPU 服务器数量，并剔除 usewr01 机房的机器",
+      "expected_output": "应显示按 GPU 型号分组的统计信息，包括每种型号的数量和套餐分布，总计机器数量。以清晰的表格或列表形式输出。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "看下 rack.deliver 节点下的 X10-X60 机器，只 deliver 节点的，不带 repair 的",
+      "expected_output": "应显示 rack.deliver 节点下的 GPU 服务器列表，排除同时包含 rack.flow.repair 的机器。包括 SN、型号、套餐、机房等详细信息。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "统计 rack.check, rack.uninstallos, rack.stress, rack.deliver 单一节点下的 X10, X40, X50, X60 机器量；再统计加上 rack.flow.repair 节点后的机器数量情况，给我一个汇总表",
+      "expected_output": "应提供两部分统计：1）单一节点统计（无 repair）；2）叠加 repair 节点统计。最后生成汇总表格，按节点和 GPU 型号交叉统计所有机器数量。",
+      "files": []
+    }
+  ]
+}
