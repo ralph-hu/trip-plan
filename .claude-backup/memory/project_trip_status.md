@@ -20,6 +20,10 @@ type: project
 ### In Cart (unpaid)
 8. ⏳ Versailles Passport | 4/2 12:00 | €105
 
+### Other Confirmed
+9. ✅ SIM cards: Vodafone 实体卡 × 3（淘宝购买）
+10. ✅ 意甲球赛：已取消，不看了，只参观安联球场
+
 ### Pending
 - Neuschwanstein Castle 16:55 (4/6) — hohenschwangau.de
 - Louvre 12:00 (4/1) — ticket.louvre.fr — €32/person (price increased!)
@@ -28,6 +32,10 @@ type: project
 - Colosseum Full Experience (4/12) — ticketing.colosseo.it — €24/person — URGENT
 - Swiss Half Fare Card — decide on arrival based on weather
 - Swiss domestic trains — buy on the day
+
+### Decided Against
+- 无人机：不带。四国主要景点几乎全部禁飞，性价比太低
+- 意甲球赛：取消
 
 ### Accommodations
 - Paris 3/31-4/3 (3N): 巴黎圣母院公寓 ¥5,273
